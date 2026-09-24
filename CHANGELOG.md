@@ -23,4 +23,5 @@ First public beta.
 ### Documentation
 - `docs/INSTALL.md`: step-by-step installation guide with troubleshooting.
 - `docs/KEYBINDS.md`: key bindings guide covering both ways to match the buttons to your controls (change the game or change Touch Portal), a checklist by game menu section, and a full reference of all 50 key-sending buttons.
+- `docs/es/INSTALACION.md` and `docs/es/KEYBINDS.md`: Spanish versions of both guides.
 - `docs/keybinds.csv`: the same reference as a spreadsheet, generated from the pages by `tools/extract_keybinds.py`.

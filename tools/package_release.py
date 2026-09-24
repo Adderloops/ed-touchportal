@@ -57,7 +57,7 @@ def zip_pages(path):
             for f in sorted(os.listdir(os.path.join(PAGES, sub))):
                 z.write(os.path.join(PAGES, sub, f), f'{sub}/{f}')
         z.write(os.path.join(ROOT, 'install', 'install.ps1'), 'install.ps1')
-        for f in ('INSTALL.md', 'KEYBINDS.md', 'keybinds.csv'):
+        for f in ('INSTALL.md', 'KEYBINDS.md', 'keybinds.csv', 'es/INSTALACION.md', 'es/KEYBINDS.md'):
             z.write(os.path.join(ROOT, 'docs', f), f'docs/{f}')
         z.write(os.path.join(ROOT, 'README.md'), 'README.md')
         z.write(os.path.join(ROOT, 'THIRD_PARTY_NOTICES.md'), 'THIRD_PARTY_NOTICES.md')

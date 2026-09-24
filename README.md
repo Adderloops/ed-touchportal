@@ -128,4 +128,9 @@ The code, page layouts and original artwork are released under the [MIT License]
 
 ### Español (resumen)
 
-Plugin y páginas de Touch Portal para Elite Dangerous. Instala el `.tpp` desde *Settings → Plug-ins → Import plug-in*, descomprime el `.zip` de páginas y ejecuta `install.ps1` con Touch Portal cerrado. Necesitas Node.js 18 o posterior. **Importante:** los botones envían teclas, así que tienes que ajustar tus controles siguiendo [docs/KEYBINDS.md](docs/KEYBINDS.md). La guía completa de instalación está en [docs/INSTALL.md](docs/INSTALL.md). La interfaz y las guías están en inglés; hay una versión en español prevista.
+Plugin y páginas de Touch Portal para Elite Dangerous. Instala el `.tpp` desde *Settings → Plug-ins → Import plug-in*, descomprime el `.zip` de páginas y ejecuta `install.ps1` con Touch Portal cerrado. Necesitas Node.js 18 o posterior. **Importante:** los botones envían teclas, así que tienes que ajustar tus controles.
+
+- 📖 **[Guía de instalación en español](docs/es/INSTALACION.md)**
+- 🎮 **[Guía de asignación de teclas en español](docs/es/KEYBINDS.md)**
+
+La interfaz de las páginas está en inglés; hay una versión en español prevista.

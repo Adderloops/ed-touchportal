@@ -1,5 +1,7 @@
 # Key bindings guide
 
+*[Versión en español](es/KEYBINDS.md)*
+
 **Read this before you play.** Some buttons on the tablet won't do anything in game until you've gone through it.
 
 ---

@@ -1,5 +1,7 @@
 # Installation guide
 
+*[Versión en español](es/INSTALACION.md)*
+
 This guide takes you from nothing to a working tablet, step by step. Allow about **20–30 minutes**, most of it for the key bindings at the end.
 
 **Contents**
