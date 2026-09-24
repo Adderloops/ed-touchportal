@@ -247,85 +247,93 @@ Está ajustado a la partida del autor: el panel izquierdo se abre en su pestaña
 
 ## 6. Referencia completa: todos los botones, uno a uno
 
-Esto es lo que envía cada botón, en el orden en que aparecen en la tablet. Los mismos datos están en [`keybinds.csv`](../keybinds.csv) (en inglés), que puedes abrir con Excel o Google Sheets.
+Esto es lo que envía cada botón, en el orden en que aparecen en la tablet. La columna **#** corresponde a los números amarillos de cada imagen. Los mismos datos están en [`keybinds.csv`](../keybinds.csv) (en inglés), que puedes abrir con Excel o Google Sheets.
 
 ### Página FLIGHT (Vuelo)
 
-| Botón en la tablet | Teclas que envía | Acción en el juego: *sección › opción* | Nombre interno |
-|---|---|---|---|
-| LANDING GEAR | `Ctrl izq. + G` | Controles de nave › Varios › **Tren de aterrizaje** | `LandingGearToggle` |
-| FA OFF | `Ctrl izq. + Z` | Controles de nave › Vuelo: varios › **Activar/desactivar asistencia de vuelo** | `ToggleFlightAssist` |
-| HARDPOINTS | `Ctrl izq. + U` | Controles de nave › Armas › **Desplegar armamento (hardpoints)** | `DeployHardpointToggle` |
-| LIGHTS | `Ctrl izq. + L` | Controles de nave › Varios › **Luces de la nave** | `ShipSpotLightToggle` |
-| CARGO SCOOP | `Ctrl izq. + C` | Controles de nave › Varios › **Recolector de carga** | `ToggleCargoScoop` |
-| NIGHT VISION | `Ctrl izq. + N` | Controles de nave › Varios › **Visión nocturna** | `NightVisionToggle` |
-| HEAT SINK | `Ctrl izq. + H` | Controles de nave › Refrigeración › **Lanzar disipador de calor** | `DeployHeatSink` |
-| SILENT RUNNING | `Ctrl izq. + S` | Controles de nave › Refrigeración › **Modo silencioso (Silent Running)** | `ToggleButtonUpInput` |
-| JETTISON ALL CARGO | `Ctrl izq. + J` | Controles de nave › Varios › **Expulsar toda la carga** | `EjectAllCargo` |
-| TARGET NEXT SYSTEM | `Ctrl dcho. + N` | Controles de nave › Selección de objetivos › **Fijar siguiente sistema de la ruta** | `TargetNextRouteSystem` |
-| REQUEST DOCKING, paso 1 | `Ctrl izq. + E` | Controles de nave › Cambios de modo › **Panel externo (panel izquierdo)** | `FocusLeftPanel` |
-| REQUEST DOCKING, paso 2 | `Re Pág` | Controles generales › Modo interfaz › **Pestaña anterior del panel** | `CyclePreviousPanel` |
-| REQUEST DOCKING, paso 3 | `Re Pág` | Controles generales › Modo interfaz › **Pestaña anterior del panel** | `CyclePreviousPanel` |
-| REQUEST DOCKING, paso 4 | `D` | Controles generales › Modo interfaz › **Panel IU: derecha** | `UI_Right` |
-| REQUEST DOCKING, paso 5 | `Espacio` | Controles generales › Modo interfaz › **Panel IU: seleccionar** | `UI_Select` |
+![Página FLIGHT con los botones numerados](../img/keys-flight.jpg)
+
+| # | Botón en la tablet | Teclas que envía | Acción en el juego: *sección › opción* | Nombre interno |
+|---|---|---|---|---|
+| 1 | LANDING GEAR | `Ctrl izq. + G` | Controles de nave › Varios › **Tren de aterrizaje** | `LandingGearToggle` |
+| 2 | FA OFF | `Ctrl izq. + Z` | Controles de nave › Vuelo: varios › **Activar/desactivar asistencia de vuelo** | `ToggleFlightAssist` |
+| 3 | HARDPOINTS | `Ctrl izq. + U` | Controles de nave › Armas › **Desplegar armamento (hardpoints)** | `DeployHardpointToggle` |
+| 4 | LIGHTS | `Ctrl izq. + L` | Controles de nave › Varios › **Luces de la nave** | `ShipSpotLightToggle` |
+| 5 | CARGO SCOOP | `Ctrl izq. + C` | Controles de nave › Varios › **Recolector de carga** | `ToggleCargoScoop` |
+| 6 | NIGHT VISION | `Ctrl izq. + N` | Controles de nave › Varios › **Visión nocturna** | `NightVisionToggle` |
+| 7 | HEAT SINK | `Ctrl izq. + H` | Controles de nave › Refrigeración › **Lanzar disipador de calor** | `DeployHeatSink` |
+| 8 | SILENT RUNNING | `Ctrl izq. + S` | Controles de nave › Refrigeración › **Modo silencioso (Silent Running)** | `ToggleButtonUpInput` |
+| 9 | JETTISON ALL CARGO | `Ctrl izq. + J` | Controles de nave › Varios › **Expulsar toda la carga** | `EjectAllCargo` |
+| 10 | TARGET NEXT SYSTEM | `Ctrl dcho. + N` | Controles de nave › Selección de objetivos › **Fijar siguiente sistema de la ruta** | `TargetNextRouteSystem` |
+| 11 | REQUEST DOCKING, paso 1 | `Ctrl izq. + E` | Controles de nave › Cambios de modo › **Panel externo (panel izquierdo)** | `FocusLeftPanel` |
+| 11 | REQUEST DOCKING, paso 2 | `Re Pág` | Controles generales › Modo interfaz › **Pestaña anterior del panel** | `CyclePreviousPanel` |
+| 11 | REQUEST DOCKING, paso 3 | `Re Pág` | Controles generales › Modo interfaz › **Pestaña anterior del panel** | `CyclePreviousPanel` |
+| 11 | REQUEST DOCKING, paso 4 | `D` | Controles generales › Modo interfaz › **Panel IU: derecha** | `UI_Right` |
+| 11 | REQUEST DOCKING, paso 5 | `Espacio` | Controles generales › Modo interfaz › **Panel IU: seleccionar** | `UI_Select` |
 
 ### Página COMBAT (Combate)
 
-| Botón en la tablet | Teclas que envía | Acción en el juego: *sección › opción* | Nombre interno |
-|---|---|---|---|
-| TARGET POWER PLANT | `Ñ (en teclado inglés: ;)` ×6 | Controles de nave › Selección de objetivos › **Subsistema anterior** | `CyclePreviousSubsystem` |
-| TEAM MATE NAV LOCK | `/` | Controles de nave › Selección de objetivos › **Bloqueo de navegación con compañero de ala** | `WingNavLock` |
-| REQUEST DOCKING, paso 1 | `Ctrl izq. + E` | Controles de nave › Cambios de modo › **Panel externo (panel izquierdo)** | `FocusLeftPanel` |
-| REQUEST DOCKING, paso 2 | `Re Pág` | Controles generales › Modo interfaz › **Pestaña anterior del panel** | `CyclePreviousPanel` |
-| REQUEST DOCKING, paso 3 | `Re Pág` | Controles generales › Modo interfaz › **Pestaña anterior del panel** | `CyclePreviousPanel` |
-| REQUEST DOCKING, paso 4 | `D` | Controles generales › Modo interfaz › **Panel IU: derecha** | `UI_Right` |
-| REQUEST DOCKING, paso 5 | `Espacio` | Controles generales › Modo interfaz › **Panel IU: seleccionar** | `UI_Select` |
-| RECALL FIGHTER | `Teclado num. 0` | Controles de nave › Órdenes de caza › **Llamar al caza (Recall Fighter)** | `OrderRequestDock` |
-| DEFEND | `Teclado num. 1` | Controles de nave › Órdenes de caza › **Defender** | `OrderDefensiveBehaviour` |
-| ENGAGE AT WILL | `Teclado num. 2` | Controles de nave › Órdenes de caza › **Atacar a discreción** | `OrderAggressiveBehaviour` |
-| ATTACK TARGET | `Teclado num. 3` | Controles de nave › Órdenes de caza › **Atacar objetivo** | `OrderFocusTarget` |
-| MAINTAIN FORMATION | `Teclado num. 4` | Controles de nave › Órdenes de caza › **Mantener formación** | `OrderHoldFire` |
-| HOLD POSITION | `Teclado num. 5` | Controles de nave › Órdenes de caza › **Mantener posición** | `OrderHoldPosition` |
-| FOLLOW ME | `Teclado num. 6` | Controles de nave › Órdenes de caza › **Sígueme** | `OrderFollow` |
+![Página COMBAT con los botones numerados](../img/keys-combat.jpg)
+
+| # | Botón en la tablet | Teclas que envía | Acción en el juego: *sección › opción* | Nombre interno |
+|---|---|---|---|---|
+| 1 | TARGET POWER PLANT | `Ñ (en teclado inglés: ;)` ×6 | Controles de nave › Selección de objetivos › **Subsistema anterior** | `CyclePreviousSubsystem` |
+| 2 | TEAM MATE NAV LOCK | `/` | Controles de nave › Selección de objetivos › **Bloqueo de navegación con compañero de ala** | `WingNavLock` |
+| 3 | REQUEST DOCKING, paso 1 | `Ctrl izq. + E` | Controles de nave › Cambios de modo › **Panel externo (panel izquierdo)** | `FocusLeftPanel` |
+| 3 | REQUEST DOCKING, paso 2 | `Re Pág` | Controles generales › Modo interfaz › **Pestaña anterior del panel** | `CyclePreviousPanel` |
+| 3 | REQUEST DOCKING, paso 3 | `Re Pág` | Controles generales › Modo interfaz › **Pestaña anterior del panel** | `CyclePreviousPanel` |
+| 3 | REQUEST DOCKING, paso 4 | `D` | Controles generales › Modo interfaz › **Panel IU: derecha** | `UI_Right` |
+| 3 | REQUEST DOCKING, paso 5 | `Espacio` | Controles generales › Modo interfaz › **Panel IU: seleccionar** | `UI_Select` |
+| 4 | RECALL FIGHTER | `Teclado num. 0` | Controles de nave › Órdenes de caza › **Llamar al caza (Recall Fighter)** | `OrderRequestDock` |
+| 5 | DEFEND | `Teclado num. 1` | Controles de nave › Órdenes de caza › **Defender** | `OrderDefensiveBehaviour` |
+| 6 | ENGAGE AT WILL | `Teclado num. 2` | Controles de nave › Órdenes de caza › **Atacar a discreción** | `OrderAggressiveBehaviour` |
+| 7 | ATTACK TARGET | `Teclado num. 3` | Controles de nave › Órdenes de caza › **Atacar objetivo** | `OrderFocusTarget` |
+| 8 | MAINTAIN FORMATION | `Teclado num. 4` | Controles de nave › Órdenes de caza › **Mantener formación** | `OrderHoldFire` |
+| 9 | HOLD POSITION | `Teclado num. 5` | Controles de nave › Órdenes de caza › **Mantener posición** | `OrderHoldPosition` |
+| 10 | FOLLOW ME | `Teclado num. 6` | Controles de nave › Órdenes de caza › **Sígueme** | `OrderFollow` |
 
 ### Página CAMERA (Cámara)
 
-| Botón en la tablet | Teclas que envía | Acción en el juego: *sección › opción* | Nombre interno |
-|---|---|---|---|
-| FREE CAMERA ON / OFF | `Ctrl dcho. + K` | Controles generales › Cámara libre › **Activar/desactivar cámara libre** | `ToggleFreeCam` |
-| ZOOM + | `Ctrl dcho. + O` | Controles generales › Cámara libre › **Acercar zoom** | `FreeCamZoomIn` |
-| ZOOM - | `Ctrl dcho. + V` | Controles generales › Cámara libre › **Alejar zoom** | `FreeCamZoomOut` |
-| LOCK | `Ctrl dcho. + Y` | Controles generales › Cámara libre › **Fijar al mundo** | `FixCameraWorldToggle` |
-| ROLL LEFT | `Ctrl dcho. + Q` | Controles generales › Cámara libre › **Alabear a la izquierda** | `RollCameraLeft` |
-| ROLL RIGHT | `Ctrl dcho. + E` | Controles generales › Cámara libre › **Alabear a la derecha** | `RollCameraRight` |
-| MOVE FORWARD | `Ctrl dcho. + W` | Controles generales › Cámara libre › **Mover hacia delante** | `MoveFreeCamForward` |
-| MOVE BACK | `Ctrl dcho. + X` | Controles generales › Cámara libre › **Mover hacia atrás** | `MoveFreeCamBackwards` |
-| ZOOM / BLUR TOGGLE | `Ctrl dcho. + A` | Controles generales › Cámara libre › **Alternar zoom/desenfoque (modo avanzado)** | `ToggleAdvanceMode` |
-| STABILISER OFF | `Ctrl dcho. + S` | Controles generales › Cámara libre › **Bloqueo de rotación (estabilizador)** | `ToggleRotationLock` |
-| SHIP CONTROLS | `Ctrl dcho. + I` | Controles generales › Cámara libre › **Fijar a la nave** | `FixCameraRelativeToggle` |
-| PHOTO MODE | `Ctrl dcho. + P` | Controles generales › Suite de cámara › **Activar/desactivar suite de cámara** | `PhotoCameraToggle` |
+![Página CAMERA con los botones numerados](../img/keys-camera.jpg)
+
+| # | Botón en la tablet | Teclas que envía | Acción en el juego: *sección › opción* | Nombre interno |
+|---|---|---|---|---|
+| 1 | FREE CAMERA ON / OFF | `Ctrl dcho. + K` | Controles generales › Cámara libre › **Activar/desactivar cámara libre** | `ToggleFreeCam` |
+| 2 | ZOOM + | `Ctrl dcho. + O` | Controles generales › Cámara libre › **Acercar zoom** | `FreeCamZoomIn` |
+| 3 | ZOOM - | `Ctrl dcho. + V` | Controles generales › Cámara libre › **Alejar zoom** | `FreeCamZoomOut` |
+| 4 | LOCK | `Ctrl dcho. + Y` | Controles generales › Cámara libre › **Fijar al mundo** | `FixCameraWorldToggle` |
+| 5 | ROLL LEFT | `Ctrl dcho. + Q` | Controles generales › Cámara libre › **Alabear a la izquierda** | `RollCameraLeft` |
+| 6 | ROLL RIGHT | `Ctrl dcho. + E` | Controles generales › Cámara libre › **Alabear a la derecha** | `RollCameraRight` |
+| 7 | MOVE FORWARD | `Ctrl dcho. + W` | Controles generales › Cámara libre › **Mover hacia delante** | `MoveFreeCamForward` |
+| 8 | MOVE BACK | `Ctrl dcho. + X` | Controles generales › Cámara libre › **Mover hacia atrás** | `MoveFreeCamBackwards` |
+| 9 | ZOOM / BLUR TOGGLE | `Ctrl dcho. + A` | Controles generales › Cámara libre › **Alternar zoom/desenfoque (modo avanzado)** | `ToggleAdvanceMode` |
+| 10 | STABILISER OFF | `Ctrl dcho. + S` | Controles generales › Cámara libre › **Bloqueo de rotación (estabilizador)** | `ToggleRotationLock` |
+| 11 | SHIP CONTROLS | `Ctrl dcho. + I` | Controles generales › Cámara libre › **Fijar a la nave** | `FixCameraRelativeToggle` |
+| 12 | PHOTO MODE | `Ctrl dcho. + P` | Controles generales › Suite de cámara › **Activar/desactivar suite de cámara** | `PhotoCameraToggle` |
 
 ### Página SRV
 
-| Botón en la tablet | Teclas que envía | Acción en el juego: *sección › opción* | Nombre interno |
-|---|---|---|---|
-| HANDBRAKE | `Ctrl dcho. + F` | Controles del VRS (SRV) › Conducción › **Freno de mano** | `AutoBreakBuggyButton` |
-| TURRET VIEW | `Ctrl dcho. + T` | Controles del VRS (SRV) › Cambios de modo › **Modo torreta** | `ToggleBuggyTurretButton` |
-| DRIVE ASSIST | `Ctrl dcho. + D` | Controles del VRS (SRV) › Conducción › **Asistencia de conducción** | `ToggleDriveAssist` |
-| HIGH BEAMS | `Ctrl dcho. + L` | Controles del VRS (SRV) › Varios › **Faros** | `HeadlightsBuggyButton` |
-| NEXT GROUP | `N` | Controles del VRS (SRV) › Armas › **Siguiente grupo de disparo** | `BuggyCycleFireGroupNext` |
-| EXTERNAL PANEL | `1` | Controles del VRS (SRV) › Cambios de modo › **Panel externo** | `FocusLeftPanel_Buggy` |
-| COMMS PANEL | `2` | Controles del VRS (SRV) › Cambios de modo › **Panel de comunicaciones** | `FocusCommsPanel_Buggy` |
-| ROLE PANEL | `3` | Controles del VRS (SRV) › Cambios de modo › **Panel de rol** | `FocusRadarPanel_Buggy` |
-| INTERNAL PANEL | `4` | Controles del VRS (SRV) › Cambios de modo › **Panel interno** | `FocusRightPanel_Buggy` |
-| QUICK COMMS | `Enter` | Controles del VRS (SRV) › Cambios de modo › **Comunicaciones rápidas** | `QuickCommsPanel_Buggy` |
-| PREVIOUS PAGE | `Re Pág` | Controles generales › Modo interfaz › **Pestaña anterior del panel** | `CyclePreviousPanel` |
-| UP | `W` | Controles generales › Modo interfaz › **Panel IU: arriba** | `UI_Up` |
-| NEXT PAGE | `Av Pág` | Controles generales › Modo interfaz › **Pestaña siguiente del panel** | `CycleNextPanel` |
-| RECALL SHIP | `Ctrl dcho. + R` | Controles del VRS (SRV) › Varios › **Llamar / despedir nave** | `RecallDismissShip` |
-| LEFT | `A` | Controles generales › Modo interfaz › **Panel IU: izquierda** | `UI_Left` |
-| DOWN | `S` | Controles generales › Modo interfaz › **Panel IU: abajo** | `UI_Down` |
-| RIGHT | `D` | Controles generales › Modo interfaz › **Panel IU: derecha** | `UI_Right` |
+![Página SRV con los botones numerados](../img/keys-srv.jpg)
+
+| # | Botón en la tablet | Teclas que envía | Acción en el juego: *sección › opción* | Nombre interno |
+|---|---|---|---|---|
+| 1 | HANDBRAKE | `Ctrl dcho. + F` | Controles del VRS (SRV) › Conducción › **Freno de mano** | `AutoBreakBuggyButton` |
+| 2 | TURRET VIEW | `Ctrl dcho. + T` | Controles del VRS (SRV) › Cambios de modo › **Modo torreta** | `ToggleBuggyTurretButton` |
+| 3 | DRIVE ASSIST | `Ctrl dcho. + D` | Controles del VRS (SRV) › Conducción › **Asistencia de conducción** | `ToggleDriveAssist` |
+| 4 | HIGH BEAMS | `Ctrl dcho. + L` | Controles del VRS (SRV) › Varios › **Faros** | `HeadlightsBuggyButton` |
+| 5 | NEXT GROUP | `N` | Controles del VRS (SRV) › Armas › **Siguiente grupo de disparo** | `BuggyCycleFireGroupNext` |
+| 6 | EXTERNAL PANEL | `1` | Controles del VRS (SRV) › Cambios de modo › **Panel externo** | `FocusLeftPanel_Buggy` |
+| 7 | COMMS PANEL | `2` | Controles del VRS (SRV) › Cambios de modo › **Panel de comunicaciones** | `FocusCommsPanel_Buggy` |
+| 8 | ROLE PANEL | `3` | Controles del VRS (SRV) › Cambios de modo › **Panel de rol** | `FocusRadarPanel_Buggy` |
+| 9 | INTERNAL PANEL | `4` | Controles del VRS (SRV) › Cambios de modo › **Panel interno** | `FocusRightPanel_Buggy` |
+| 10 | QUICK COMMS | `Enter` | Controles del VRS (SRV) › Cambios de modo › **Comunicaciones rápidas** | `QuickCommsPanel_Buggy` |
+| 11 | PREVIOUS PAGE | `Re Pág` | Controles generales › Modo interfaz › **Pestaña anterior del panel** | `CyclePreviousPanel` |
+| 12 | UP | `W` | Controles generales › Modo interfaz › **Panel IU: arriba** | `UI_Up` |
+| 13 | NEXT PAGE | `Av Pág` | Controles generales › Modo interfaz › **Pestaña siguiente del panel** | `CycleNextPanel` |
+| 14 | RECALL SHIP | `Ctrl dcho. + R` | Controles del VRS (SRV) › Varios › **Llamar / despedir nave** | `RecallDismissShip` |
+| 15 | LEFT | `A` | Controles generales › Modo interfaz › **Panel IU: izquierda** | `UI_Left` |
+| 16 | DOWN | `S` | Controles generales › Modo interfaz › **Panel IU: abajo** | `UI_Down` |
+| 17 | RIGHT | `D` | Controles generales › Modo interfaz › **Panel IU: derecha** | `UI_Right` |
 
 > El **nombre interno** es exactamente lo que aparece en tu fichero de controles (`%LOCALAPPDATA%\Frontier Developments\Elite Dangerous\Options\Bindings\*.binds`). Si no encuentras una opción en el menú, puedes buscarla ahí.
 

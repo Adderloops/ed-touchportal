@@ -246,85 +246,93 @@ It's tuned to the author's game: the left panel opening on its default tab, and 
 
 ## 6. Full reference: every button, one by one
 
-This is what every button sends, in the order it appears on the tablet. The same data is in [`keybinds.csv`](keybinds.csv), which you can open in Excel or Google Sheets.
+This is what every button sends, in the order it appears on the tablet. The **#** column matches the yellow numbers on each picture. The same data is in [`keybinds.csv`](keybinds.csv), which you can open in Excel or Google Sheets.
 
 ### FLIGHT page
 
-| Button on the tablet | Keys it sends | Game action — *Options › Controls › section › option* | Internal name |
-|---|---|---|---|
-| LANDING GEAR | `Left Ctrl + G` | Ship Controls › Miscellaneous › **Landing Gear** | `LandingGearToggle` |
-| FA OFF | `Left Ctrl + Z` | Ship Controls › Flight Miscellaneous › **Toggle Flight Assist** | `ToggleFlightAssist` |
-| HARDPOINTS | `Left Ctrl + U` | Ship Controls › Weapons › **Deploy Hardpoints** | `DeployHardpointToggle` |
-| LIGHTS | `Left Ctrl + L` | Ship Controls › Miscellaneous › **Ship Lights** | `ShipSpotLightToggle` |
-| CARGO SCOOP | `Left Ctrl + C` | Ship Controls › Miscellaneous › **Cargo Scoop** | `ToggleCargoScoop` |
-| NIGHT VISION | `Left Ctrl + N` | Ship Controls › Miscellaneous › **Night Vision** | `NightVisionToggle` |
-| HEAT SINK | `Left Ctrl + H` | Ship Controls › Cooling › **Deploy Heat Sink** | `DeployHeatSink` |
-| SILENT RUNNING | `Left Ctrl + S` | Ship Controls › Cooling › **Silent Running** | `ToggleButtonUpInput` |
-| JETTISON ALL CARGO | `Left Ctrl + J` | Ship Controls › Miscellaneous › **Jettison All Cargo** | `EjectAllCargo` |
-| TARGET NEXT SYSTEM | `Right Ctrl + N` | Ship Controls › Targeting › **Target Next System in Route** | `TargetNextRouteSystem` |
-| REQUEST DOCKING — step 1 | `Left Ctrl + E` | Ship Controls › Mode Switches › **External Panel (left panel)** | `FocusLeftPanel` |
-| REQUEST DOCKING — step 2 | `Page Up` | General Controls › Interface Mode › **Previous Panel Tab** | `CyclePreviousPanel` |
-| REQUEST DOCKING — step 3 | `Page Up` | General Controls › Interface Mode › **Previous Panel Tab** | `CyclePreviousPanel` |
-| REQUEST DOCKING — step 4 | `D` | General Controls › Interface Mode › **UI Panel Right** | `UI_Right` |
-| REQUEST DOCKING — step 5 | `Space` | General Controls › Interface Mode › **UI Panel Select** | `UI_Select` |
+![FLIGHT page with numbered buttons](img/keys-flight.jpg)
+
+| # | Button on the tablet | Keys it sends | Game action — *Options › Controls › section › option* | Internal name |
+|---|---|---|---|---|
+| 1 | LANDING GEAR | `Left Ctrl + G` | Ship Controls › Miscellaneous › **Landing Gear** | `LandingGearToggle` |
+| 2 | FA OFF | `Left Ctrl + Z` | Ship Controls › Flight Miscellaneous › **Toggle Flight Assist** | `ToggleFlightAssist` |
+| 3 | HARDPOINTS | `Left Ctrl + U` | Ship Controls › Weapons › **Deploy Hardpoints** | `DeployHardpointToggle` |
+| 4 | LIGHTS | `Left Ctrl + L` | Ship Controls › Miscellaneous › **Ship Lights** | `ShipSpotLightToggle` |
+| 5 | CARGO SCOOP | `Left Ctrl + C` | Ship Controls › Miscellaneous › **Cargo Scoop** | `ToggleCargoScoop` |
+| 6 | NIGHT VISION | `Left Ctrl + N` | Ship Controls › Miscellaneous › **Night Vision** | `NightVisionToggle` |
+| 7 | HEAT SINK | `Left Ctrl + H` | Ship Controls › Cooling › **Deploy Heat Sink** | `DeployHeatSink` |
+| 8 | SILENT RUNNING | `Left Ctrl + S` | Ship Controls › Cooling › **Silent Running** | `ToggleButtonUpInput` |
+| 9 | JETTISON ALL CARGO | `Left Ctrl + J` | Ship Controls › Miscellaneous › **Jettison All Cargo** | `EjectAllCargo` |
+| 10 | TARGET NEXT SYSTEM | `Right Ctrl + N` | Ship Controls › Targeting › **Target Next System in Route** | `TargetNextRouteSystem` |
+| 11 | REQUEST DOCKING — step 1 | `Left Ctrl + E` | Ship Controls › Mode Switches › **External Panel (left panel)** | `FocusLeftPanel` |
+| 11 | REQUEST DOCKING — step 2 | `Page Up` | General Controls › Interface Mode › **Previous Panel Tab** | `CyclePreviousPanel` |
+| 11 | REQUEST DOCKING — step 3 | `Page Up` | General Controls › Interface Mode › **Previous Panel Tab** | `CyclePreviousPanel` |
+| 11 | REQUEST DOCKING — step 4 | `D` | General Controls › Interface Mode › **UI Panel Right** | `UI_Right` |
+| 11 | REQUEST DOCKING — step 5 | `Space` | General Controls › Interface Mode › **UI Panel Select** | `UI_Select` |
 
 ### COMBAT page
 
-| Button on the tablet | Keys it sends | Game action — *Options › Controls › section › option* | Internal name |
-|---|---|---|---|
-| TARGET POWER PLANT | key right of `L` (`Ñ` on Spanish, `;` on US keyboards) ×6 | Ship Controls › Targeting › **Cycle Previous Subsystem** | `CyclePreviousSubsystem` |
-| TEAM MATE NAV LOCK | `/` | Ship Controls › Targeting › **Wingman Nav-Lock** | `WingNavLock` |
-| REQUEST DOCKING — step 1 | `Left Ctrl + E` | Ship Controls › Mode Switches › **External Panel (left panel)** | `FocusLeftPanel` |
-| REQUEST DOCKING — step 2 | `Page Up` | General Controls › Interface Mode › **Previous Panel Tab** | `CyclePreviousPanel` |
-| REQUEST DOCKING — step 3 | `Page Up` | General Controls › Interface Mode › **Previous Panel Tab** | `CyclePreviousPanel` |
-| REQUEST DOCKING — step 4 | `D` | General Controls › Interface Mode › **UI Panel Right** | `UI_Right` |
-| REQUEST DOCKING — step 5 | `Space` | General Controls › Interface Mode › **UI Panel Select** | `UI_Select` |
-| RECALL FIGHTER | `Numpad 0` | Ship Controls › Fighter Orders › **Recall Fighter** | `OrderRequestDock` |
-| DEFEND | `Numpad 1` | Ship Controls › Fighter Orders › **Defend** | `OrderDefensiveBehaviour` |
-| ENGAGE AT WILL | `Numpad 2` | Ship Controls › Fighter Orders › **Engage At Will** | `OrderAggressiveBehaviour` |
-| ATTACK TARGET | `Numpad 3` | Ship Controls › Fighter Orders › **Attack Target** | `OrderFocusTarget` |
-| MAINTAIN FORMATION | `Numpad 4` | Ship Controls › Fighter Orders › **Maintain Formation** | `OrderHoldFire` |
-| HOLD POSITION | `Numpad 5` | Ship Controls › Fighter Orders › **Hold Position** | `OrderHoldPosition` |
-| FOLLOW ME | `Numpad 6` | Ship Controls › Fighter Orders › **Follow Me** | `OrderFollow` |
+![COMBAT page with numbered buttons](img/keys-combat.jpg)
+
+| # | Button on the tablet | Keys it sends | Game action — *Options › Controls › section › option* | Internal name |
+|---|---|---|---|---|
+| 1 | TARGET POWER PLANT | `key right of L (Ñ on Spanish, ; on US keyboards)` ×6 | Ship Controls › Targeting › **Cycle Previous Subsystem** | `CyclePreviousSubsystem` |
+| 2 | TEAM MATE NAV LOCK | `/` | Ship Controls › Targeting › **Wingman Nav-Lock** | `WingNavLock` |
+| 3 | REQUEST DOCKING — step 1 | `Left Ctrl + E` | Ship Controls › Mode Switches › **External Panel (left panel)** | `FocusLeftPanel` |
+| 3 | REQUEST DOCKING — step 2 | `Page Up` | General Controls › Interface Mode › **Previous Panel Tab** | `CyclePreviousPanel` |
+| 3 | REQUEST DOCKING — step 3 | `Page Up` | General Controls › Interface Mode › **Previous Panel Tab** | `CyclePreviousPanel` |
+| 3 | REQUEST DOCKING — step 4 | `D` | General Controls › Interface Mode › **UI Panel Right** | `UI_Right` |
+| 3 | REQUEST DOCKING — step 5 | `Space` | General Controls › Interface Mode › **UI Panel Select** | `UI_Select` |
+| 4 | RECALL FIGHTER | `Numpad 0` | Ship Controls › Fighter Orders › **Recall Fighter** | `OrderRequestDock` |
+| 5 | DEFEND | `Numpad 1` | Ship Controls › Fighter Orders › **Defend** | `OrderDefensiveBehaviour` |
+| 6 | ENGAGE AT WILL | `Numpad 2` | Ship Controls › Fighter Orders › **Engage At Will** | `OrderAggressiveBehaviour` |
+| 7 | ATTACK TARGET | `Numpad 3` | Ship Controls › Fighter Orders › **Attack Target** | `OrderFocusTarget` |
+| 8 | MAINTAIN FORMATION | `Numpad 4` | Ship Controls › Fighter Orders › **Maintain Formation** | `OrderHoldFire` |
+| 9 | HOLD POSITION | `Numpad 5` | Ship Controls › Fighter Orders › **Hold Position** | `OrderHoldPosition` |
+| 10 | FOLLOW ME | `Numpad 6` | Ship Controls › Fighter Orders › **Follow Me** | `OrderFollow` |
 
 ### CAMERA page
 
-| Button on the tablet | Keys it sends | Game action — *Options › Controls › section › option* | Internal name |
-|---|---|---|---|
-| FREE CAMERA ON / OFF | `Right Ctrl + K` | General Controls › Free Camera › **Toggle Free Camera** | `ToggleFreeCam` |
-| ZOOM + | `Right Ctrl + O` | General Controls › Free Camera › **Zoom In** | `FreeCamZoomIn` |
-| ZOOM - | `Right Ctrl + V` | General Controls › Free Camera › **Zoom Out** | `FreeCamZoomOut` |
-| LOCK | `Right Ctrl + Y` | General Controls › Free Camera › **Lock to World** | `FixCameraWorldToggle` |
-| ROLL LEFT | `Right Ctrl + Q` | General Controls › Free Camera › **Roll Left** | `RollCameraLeft` |
-| ROLL RIGHT | `Right Ctrl + E` | General Controls › Free Camera › **Roll Right** | `RollCameraRight` |
-| MOVE FORWARD | `Right Ctrl + W` | General Controls › Free Camera › **Move Forward** | `MoveFreeCamForward` |
-| MOVE BACK | `Right Ctrl + X` | General Controls › Free Camera › **Move Backwards** | `MoveFreeCamBackwards` |
-| ZOOM / BLUR TOGGLE | `Right Ctrl + A` | General Controls › Free Camera › **Toggle Zoom/Blur (Advanced Mode)** | `ToggleAdvanceMode` |
-| STABILISER OFF | `Right Ctrl + S` | General Controls › Free Camera › **Toggle Rotation Lock (Stabiliser)** | `ToggleRotationLock` |
-| SHIP CONTROLS | `Right Ctrl + I` | General Controls › Free Camera › **Lock to Ship** | `FixCameraRelativeToggle` |
-| PHOTO MODE | `Right Ctrl + P` | General Controls › Camera Suite › **Toggle Camera Suite** | `PhotoCameraToggle` |
+![CAMERA page with numbered buttons](img/keys-camera.jpg)
+
+| # | Button on the tablet | Keys it sends | Game action — *Options › Controls › section › option* | Internal name |
+|---|---|---|---|---|
+| 1 | FREE CAMERA ON / OFF | `Right Ctrl + K` | General Controls › Free Camera › **Toggle Free Camera** | `ToggleFreeCam` |
+| 2 | ZOOM + | `Right Ctrl + O` | General Controls › Free Camera › **Zoom In** | `FreeCamZoomIn` |
+| 3 | ZOOM - | `Right Ctrl + V` | General Controls › Free Camera › **Zoom Out** | `FreeCamZoomOut` |
+| 4 | LOCK | `Right Ctrl + Y` | General Controls › Free Camera › **Lock to World** | `FixCameraWorldToggle` |
+| 5 | ROLL LEFT | `Right Ctrl + Q` | General Controls › Free Camera › **Roll Left** | `RollCameraLeft` |
+| 6 | ROLL RIGHT | `Right Ctrl + E` | General Controls › Free Camera › **Roll Right** | `RollCameraRight` |
+| 7 | MOVE FORWARD | `Right Ctrl + W` | General Controls › Free Camera › **Move Forward** | `MoveFreeCamForward` |
+| 8 | MOVE BACK | `Right Ctrl + X` | General Controls › Free Camera › **Move Backwards** | `MoveFreeCamBackwards` |
+| 9 | ZOOM / BLUR TOGGLE | `Right Ctrl + A` | General Controls › Free Camera › **Toggle Zoom/Blur (Advanced Mode)** | `ToggleAdvanceMode` |
+| 10 | STABILISER OFF | `Right Ctrl + S` | General Controls › Free Camera › **Toggle Rotation Lock (Stabiliser)** | `ToggleRotationLock` |
+| 11 | SHIP CONTROLS | `Right Ctrl + I` | General Controls › Free Camera › **Lock to Ship** | `FixCameraRelativeToggle` |
+| 12 | PHOTO MODE | `Right Ctrl + P` | General Controls › Camera Suite › **Toggle Camera Suite** | `PhotoCameraToggle` |
 
 ### SRV page
 
-| Button on the tablet | Keys it sends | Game action — *Options › Controls › section › option* | Internal name |
-|---|---|---|---|
-| HANDBRAKE | `Right Ctrl + F` | SRV Controls › Driving › **Handbrake** | `AutoBreakBuggyButton` |
-| TURRET VIEW | `Right Ctrl + T` | SRV Controls › Mode Switches › **Toggle Turret Mode** | `ToggleBuggyTurretButton` |
-| DRIVE ASSIST | `Right Ctrl + D` | SRV Controls › Driving › **Drive Assist** | `ToggleDriveAssist` |
-| HIGH BEAMS | `Right Ctrl + L` | SRV Controls › Miscellaneous › **Headlights** | `HeadlightsBuggyButton` |
-| NEXT GROUP | `N` | SRV Controls › Weapons › **Next Fire Group** | `BuggyCycleFireGroupNext` |
-| EXTERNAL PANEL | `1` | SRV Controls › Mode Switches › **External Panel** | `FocusLeftPanel_Buggy` |
-| COMMS PANEL | `2` | SRV Controls › Mode Switches › **Comms Panel** | `FocusCommsPanel_Buggy` |
-| ROLE PANEL | `3` | SRV Controls › Mode Switches › **Role Panel** | `FocusRadarPanel_Buggy` |
-| INTERNAL PANEL | `4` | SRV Controls › Mode Switches › **Internal Panel** | `FocusRightPanel_Buggy` |
-| QUICK COMMS | `Enter` | SRV Controls › Mode Switches › **Quick Comms** | `QuickCommsPanel_Buggy` |
-| PREVIOUS PAGE | `Page Up` | General Controls › Interface Mode › **Previous Panel Tab** | `CyclePreviousPanel` |
-| UP | `W` | General Controls › Interface Mode › **UI Panel Up** | `UI_Up` |
-| NEXT PAGE | `Page Down` | General Controls › Interface Mode › **Next Panel Tab** | `CycleNextPanel` |
-| RECALL SHIP | `Right Ctrl + R` | SRV Controls › Miscellaneous › **Recall / Dismiss Ship** | `RecallDismissShip` |
-| LEFT | `A` | General Controls › Interface Mode › **UI Panel Left** | `UI_Left` |
-| DOWN | `S` | General Controls › Interface Mode › **UI Panel Down** | `UI_Down` |
-| RIGHT | `D` | General Controls › Interface Mode › **UI Panel Right** | `UI_Right` |
+![SRV page with numbered buttons](img/keys-srv.jpg)
+
+| # | Button on the tablet | Keys it sends | Game action — *Options › Controls › section › option* | Internal name |
+|---|---|---|---|---|
+| 1 | HANDBRAKE | `Right Ctrl + F` | SRV Controls › Driving › **Handbrake** | `AutoBreakBuggyButton` |
+| 2 | TURRET VIEW | `Right Ctrl + T` | SRV Controls › Mode Switches › **Toggle Turret Mode** | `ToggleBuggyTurretButton` |
+| 3 | DRIVE ASSIST | `Right Ctrl + D` | SRV Controls › Driving › **Drive Assist** | `ToggleDriveAssist` |
+| 4 | HIGH BEAMS | `Right Ctrl + L` | SRV Controls › Miscellaneous › **Headlights** | `HeadlightsBuggyButton` |
+| 5 | NEXT GROUP | `N` | SRV Controls › Weapons › **Next Fire Group** | `BuggyCycleFireGroupNext` |
+| 6 | EXTERNAL PANEL | `1` | SRV Controls › Mode Switches › **External Panel** | `FocusLeftPanel_Buggy` |
+| 7 | COMMS PANEL | `2` | SRV Controls › Mode Switches › **Comms Panel** | `FocusCommsPanel_Buggy` |
+| 8 | ROLE PANEL | `3` | SRV Controls › Mode Switches › **Role Panel** | `FocusRadarPanel_Buggy` |
+| 9 | INTERNAL PANEL | `4` | SRV Controls › Mode Switches › **Internal Panel** | `FocusRightPanel_Buggy` |
+| 10 | QUICK COMMS | `Enter` | SRV Controls › Mode Switches › **Quick Comms** | `QuickCommsPanel_Buggy` |
+| 11 | PREVIOUS PAGE | `Page Up` | General Controls › Interface Mode › **Previous Panel Tab** | `CyclePreviousPanel` |
+| 12 | UP | `W` | General Controls › Interface Mode › **UI Panel Up** | `UI_Up` |
+| 13 | NEXT PAGE | `Page Down` | General Controls › Interface Mode › **Next Panel Tab** | `CycleNextPanel` |
+| 14 | RECALL SHIP | `Right Ctrl + R` | SRV Controls › Miscellaneous › **Recall / Dismiss Ship** | `RecallDismissShip` |
+| 15 | LEFT | `A` | General Controls › Interface Mode › **UI Panel Left** | `UI_Left` |
+| 16 | DOWN | `S` | General Controls › Interface Mode › **UI Panel Down** | `UI_Down` |
+| 17 | RIGHT | `D` | General Controls › Interface Mode › **UI Panel Right** | `UI_Right` |
 
 > The option names come from the game's English menu. They can vary slightly between game versions or languages. The **internal name** is exactly what's written in your bindings file (`%LOCALAPPDATA%\Frontier Developments\Elite Dangerous\Options\Bindings\*.binds`), so you can search for it there if you can't find an option.
 

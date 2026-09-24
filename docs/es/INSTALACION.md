@@ -127,6 +127,11 @@ Qué hace el script, para que no haya sorpresas:
 3. Abre **FLIGHT**. Las casillas de estado (DOCKED, SHIELDS, SUPERCRUISE…) se iluminan según el estado de tu nave.
 4. Abre **CMDR**. Aparecen tu nombre de comandante, tus rangos y tu nave.
 
+Así se ven UTILS y FLIGHT cuando todo funciona (las casillas iluminadas dependen de lo que esté haciendo tu nave):
+
+![Página UTILS](../img/utils.jpg)
+![Página FLIGHT](../img/flight.jpg)
+
 Si todo eso funciona, la parte de datos en vivo está lista. 🎉
 
 ---

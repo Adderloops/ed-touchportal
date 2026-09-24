@@ -4,6 +4,8 @@
 
 It turns a tablet into a live cockpit panel that works alongside your HOTAS, gamepad and keyboard. The plugin reads the game's Journal and `Status.json` in real time, so the pages show your ship's state, location, cargo, ranks, loadout and more, and light up as things change in game.
 
+![ED Touch Portal: FLIGHT page](docs/img/flight.jpg)
+
 > **Beta:** this is the first public release. Expect rough edges and please report anything odd in [Issues](../../issues).
 
 ---
@@ -35,6 +37,20 @@ A 12 × 9 grid with 2560 × 1600 artwork, designed for a 16:10 tablet in landsca
 | SRV | ED - SRV | SRV status, cargo, and recall/dismiss ship |
 | *(subpage)* | ED - Loadout | Full ship loadout in 4 columns (core, optional, hardpoints, utility), with engineering grades |
 | *(subpage)* | ED - Estación | Last engineer, engineer rank, last modification, and Community Goal progress |
+
+### Screenshots
+
+*Taken on a 16:10 Android tablet. Personal details (commander, ship name, credits, location, squadron) are hidden.*
+
+| | |
+|---|---|
+| ![FLIGHT](docs/img/flight.jpg) **FLIGHT** | ![NAV](docs/img/nav.jpg) **NAV** |
+| ![COMBAT](docs/img/combat.jpg) **COMBAT** | ![EXPLORE](docs/img/explore.jpg) **EXPLORE** |
+| ![TRADE](docs/img/trade.jpg) **TRADE** | ![POWER](docs/img/power.jpg) **POWER** |
+| ![CMDR](docs/img/cmdr.jpg) **CMDR** | ![CAMERA](docs/img/camera.jpg) **CAMERA** |
+| ![ON FOOT](docs/img/onfoot.jpg) **ON FOOT** | ![CARRIER](docs/img/carrier.jpg) **CARRIER** |
+| ![UTILS](docs/img/utils.jpg) **UTILS** | ![SRV](docs/img/srv.jpg) **SRV** |
+| ![LOADOUT](docs/img/loadout.jpg) **LOADOUT** (subpage of FLIGHT) | |
 
 ---
 

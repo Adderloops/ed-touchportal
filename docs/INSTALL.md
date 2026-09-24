@@ -127,6 +127,11 @@ What the script does, so there are no surprises:
 3. Open **FLIGHT**. The status tiles (DOCKED, SHIELDS, SUPERCRUISE…) light up to match your ship.
 4. Open **CMDR**. Your commander name, ranks and ship appear.
 
+This is what UTILS and FLIGHT look like when everything is working (the lit tiles depend on what your ship is doing):
+
+![UTILS page](img/utils.jpg)
+![FLIGHT page](img/flight.jpg)
+
 If all of that works, the live data side is done. 🎉
 
 ---
