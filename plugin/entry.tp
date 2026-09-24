@@ -1,0 +1,3206 @@
+{
+  "sdk": 6,
+  "version": 100,
+  "name": "ED Touch Portal Plugin",
+  "id": "com.adder.edtouchportal",
+  "plugin_start_cmd": "node ./plugin.js start",
+  "configuration": {
+    "colorDark": "#0b0f14",
+    "colorLight": "#e67e22"
+  },
+  "categories": [
+    {
+      "id": "ed.ship",
+      "name": "Ship Status",
+      "imagepath": "%TP_PLUGIN_FOLDER%ed-touchportal-plugin/images/icon-24.png",
+      "actions": [
+        {
+          "id": "ed.ship.action.recallShipPressed",
+          "name": "Ship: notify Recall/Dismiss button press (internal use)",
+          "prefix": "Ship Status",
+          "type": "communicate",
+          "format": "Ship: flag a possible Dismiss when the Recall/Dismiss Ship button is pressed"
+        }
+      ],
+      "connectors": [],
+      "states": [
+        {
+          "id": "ed.ship.fuelMain",
+          "type": "text",
+          "desc": "Main tank fuel (t)",
+          "default": "0"
+        },
+        {
+          "id": "ed.ship.fuelReservoir",
+          "type": "text",
+          "desc": "Reservoir fuel (t)",
+          "default": "0"
+        },
+        {
+          "id": "ed.ship.cargoMass",
+          "type": "text",
+          "desc": "Current cargo (t)",
+          "default": "0"
+        },
+        {
+          "id": "ed.ship.legalState",
+          "type": "text",
+          "desc": "Legal state",
+          "default": "Clean"
+        },
+        {
+          "id": "ed.ship.guiFocus",
+          "type": "text",
+          "desc": "Currently focused panel",
+          "default": "NoFocus"
+        },
+        {
+          "id": "ed.ship.fireGroup",
+          "type": "text",
+          "desc": "Active fire group",
+          "default": "0"
+        },
+        {
+          "id": "ed.ship.pipsSystems",
+          "type": "text",
+          "desc": "Systems pips",
+          "default": "0"
+        },
+        {
+          "id": "ed.ship.pipsEngines",
+          "type": "text",
+          "desc": "Engines pips",
+          "default": "0"
+        },
+        {
+          "id": "ed.ship.pipsWeapons",
+          "type": "text",
+          "desc": "Weapons pips",
+          "default": "0"
+        },
+        {
+          "id": "ed.ship.selectedWeapon",
+          "type": "text",
+          "desc": "Selected weapon/module",
+          "default": ""
+        },
+        {
+          "id": "ed.ship.gravity",
+          "type": "text",
+          "desc": "Local gravity (G)",
+          "default": ""
+        },
+        {
+          "id": "ed.ship.shipRecallLabel",
+          "type": "text",
+          "desc": "Recall/Dismiss Ship button label based on the last detected signal",
+          "default": "RECALL\nSHIP"
+        },
+        {
+          "id": "ed.ship.loadoutHardpoints",
+          "type": "text",
+          "desc": "Equipped weapon hardpoints (Small/Medium/Large/Huge)",
+          "default": "No data yet"
+        },
+        {
+          "id": "ed.ship.loadoutUtility",
+          "type": "text",
+          "desc": "Equipped utility mounts (Tiny)",
+          "default": "No data yet"
+        },
+        {
+          "id": "ed.ship.loadoutCoreInternals",
+          "type": "text",
+          "desc": "Core internal modules (the 8 fixed slots of every ship)",
+          "default": "No data yet"
+        },
+        {
+          "id": "ed.ship.loadoutOptionalInternals",
+          "type": "text",
+          "desc": "Equipped optional internal modules",
+          "default": "No data yet"
+        },
+        {
+          "id": "ed.ship.loadoutMass",
+          "type": "text",
+          "desc": "Unladen / laden mass (tons, calculated from Loadout)",
+          "default": "No data yet"
+        },
+        {
+          "id": "ed.ship.loadoutJumpRangeMax",
+          "type": "text",
+          "desc": "Max jump range (ly, from the Loadout event)",
+          "default": "No data yet"
+        },
+        {
+          "id": "ed.ship.loadoutShipValue",
+          "type": "text",
+          "desc": "Total ship value (hull + modules, credits, from the Loadout event)",
+          "default": "No data yet"
+        },
+        {
+          "id": "ed.ship.loadoutInsurance",
+          "type": "text",
+          "desc": "Insurance / rebuy cost (credits, from the Loadout event)",
+          "default": "No data yet"
+        },
+        {
+          "id": "ed.ship.isDocked",
+          "type": "text",
+          "desc": "Docked",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.isLanded",
+          "type": "text",
+          "desc": "Landed on a surface",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.isLandingGearDown",
+          "type": "text",
+          "desc": "Landing gear down",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.areShieldsUp",
+          "type": "text",
+          "desc": "Shields up",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.isSupercruise",
+          "type": "text",
+          "desc": "In supercruise",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.isFlightAssistOff",
+          "type": "text",
+          "desc": "Flight Assist off",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.areHardpointsDeployed",
+          "type": "text",
+          "desc": "Hardpoints deployed",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.isInWing",
+          "type": "text",
+          "desc": "In a Wing",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.areLightsOn",
+          "type": "text",
+          "desc": "Lights on",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.isCargoScoopDeployed",
+          "type": "text",
+          "desc": "Cargo scoop deployed",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.isSilentRunning",
+          "type": "text",
+          "desc": "Silent Running on",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.isScoopingFuel",
+          "type": "text",
+          "desc": "Scooping fuel",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.isSRVHandbrake",
+          "type": "text",
+          "desc": "SRV handbrake on",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.isSRVUsingTurretView",
+          "type": "text",
+          "desc": "SRV using turret view",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.isSRVTurretRetracted",
+          "type": "text",
+          "desc": "SRV turret retracted",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.isSRVDriveAssist",
+          "type": "text",
+          "desc": "SRV Drive Assist on",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.isFSDMassLocked",
+          "type": "text",
+          "desc": "FSD mass locked",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.isFSDCharging",
+          "type": "text",
+          "desc": "FSD charging",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.isFSDCooldown",
+          "type": "text",
+          "desc": "FSD cooldown",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.isLowFuel",
+          "type": "text",
+          "desc": "Low fuel (<25%)",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.isOverHeating",
+          "type": "text",
+          "desc": "Overheating (>100%)",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.hasLatLong",
+          "type": "text",
+          "desc": "Has valid surface coordinates",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.isInDanger",
+          "type": "text",
+          "desc": "In danger",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.isBeingInterdicted",
+          "type": "text",
+          "desc": "Being interdicted",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.isInMainShip",
+          "type": "text",
+          "desc": "In main ship",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.isInFighter",
+          "type": "text",
+          "desc": "In fighter",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.isInSRV",
+          "type": "text",
+          "desc": "In SRV",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.isHUDInAnalysisMode",
+          "type": "text",
+          "desc": "HUD in Analysis mode",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.isNightVision",
+          "type": "text",
+          "desc": "Night vision on",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.isAltitudeFromAverageRadius",
+          "type": "text",
+          "desc": "Altitude from average radius",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.isFSDJump",
+          "type": "text",
+          "desc": "FSD jump (hyperspace)",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.isSRVHighBeam",
+          "type": "text",
+          "desc": "SRV high beam on",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutHp1",
+          "type": "text",
+          "desc": "Hardpoint 1: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutHp1Eng",
+          "type": "text",
+          "desc": "Hardpoint 1: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutHp2",
+          "type": "text",
+          "desc": "Hardpoint 2: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutHp2Eng",
+          "type": "text",
+          "desc": "Hardpoint 2: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutHp3",
+          "type": "text",
+          "desc": "Hardpoint 3: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutHp3Eng",
+          "type": "text",
+          "desc": "Hardpoint 3: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutHp4",
+          "type": "text",
+          "desc": "Hardpoint 4: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutHp4Eng",
+          "type": "text",
+          "desc": "Hardpoint 4: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutHp5",
+          "type": "text",
+          "desc": "Hardpoint 5: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutHp5Eng",
+          "type": "text",
+          "desc": "Hardpoint 5: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutHp6",
+          "type": "text",
+          "desc": "Hardpoint 6: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutHp6Eng",
+          "type": "text",
+          "desc": "Hardpoint 6: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutHp7",
+          "type": "text",
+          "desc": "Hardpoint 7: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutHp7Eng",
+          "type": "text",
+          "desc": "Hardpoint 7: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutHp8",
+          "type": "text",
+          "desc": "Hardpoint 8: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutHp8Eng",
+          "type": "text",
+          "desc": "Hardpoint 8: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutUt1",
+          "type": "text",
+          "desc": "Utility 1: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutUt1Eng",
+          "type": "text",
+          "desc": "Utility 1: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutUt2",
+          "type": "text",
+          "desc": "Utility 2: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutUt2Eng",
+          "type": "text",
+          "desc": "Utility 2: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutUt3",
+          "type": "text",
+          "desc": "Utility 3: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutUt3Eng",
+          "type": "text",
+          "desc": "Utility 3: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutUt4",
+          "type": "text",
+          "desc": "Utility 4: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutUt4Eng",
+          "type": "text",
+          "desc": "Utility 4: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutUt5",
+          "type": "text",
+          "desc": "Utility 5: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutUt5Eng",
+          "type": "text",
+          "desc": "Utility 5: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutUt6",
+          "type": "text",
+          "desc": "Utility 6: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutUt6Eng",
+          "type": "text",
+          "desc": "Utility 6: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutUt7",
+          "type": "text",
+          "desc": "Utility 7: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutUt7Eng",
+          "type": "text",
+          "desc": "Utility 7: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutUt8",
+          "type": "text",
+          "desc": "Utility 8: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutUt8Eng",
+          "type": "text",
+          "desc": "Utility 8: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutCorePowerPlant",
+          "type": "text",
+          "desc": "Power Plant: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutCorePowerPlantEng",
+          "type": "text",
+          "desc": "Power Plant: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutCoreMainEngines",
+          "type": "text",
+          "desc": "Thrusters: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutCoreMainEnginesEng",
+          "type": "text",
+          "desc": "Thrusters: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutCoreFrameShiftDrive",
+          "type": "text",
+          "desc": "FSD: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutCoreFrameShiftDriveEng",
+          "type": "text",
+          "desc": "FSD: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutCoreLifeSupport",
+          "type": "text",
+          "desc": "Life Support: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutCoreLifeSupportEng",
+          "type": "text",
+          "desc": "Life Support: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutCorePowerDistributor",
+          "type": "text",
+          "desc": "Power Distributor: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutCorePowerDistributorEng",
+          "type": "text",
+          "desc": "Power Distributor: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutCoreRadar",
+          "type": "text",
+          "desc": "Sensors: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutCoreRadarEng",
+          "type": "text",
+          "desc": "Sensors: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutCoreFuelTank",
+          "type": "text",
+          "desc": "Fuel Tank: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutCoreFuelTankEng",
+          "type": "text",
+          "desc": "Fuel Tank: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutCoreArmour",
+          "type": "text",
+          "desc": "Armour: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutCoreArmourEng",
+          "type": "text",
+          "desc": "Armour: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutOpt1",
+          "type": "text",
+          "desc": "Optional Internal 1: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutOpt1Eng",
+          "type": "text",
+          "desc": "Optional Internal 1: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutOpt2",
+          "type": "text",
+          "desc": "Optional Internal 2: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutOpt2Eng",
+          "type": "text",
+          "desc": "Optional Internal 2: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutOpt3",
+          "type": "text",
+          "desc": "Optional Internal 3: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutOpt3Eng",
+          "type": "text",
+          "desc": "Optional Internal 3: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutOpt4",
+          "type": "text",
+          "desc": "Optional Internal 4: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutOpt4Eng",
+          "type": "text",
+          "desc": "Optional Internal 4: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutOpt5",
+          "type": "text",
+          "desc": "Optional Internal 5: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutOpt5Eng",
+          "type": "text",
+          "desc": "Optional Internal 5: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutOpt6",
+          "type": "text",
+          "desc": "Optional Internal 6: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutOpt6Eng",
+          "type": "text",
+          "desc": "Optional Internal 6: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutOpt7",
+          "type": "text",
+          "desc": "Optional Internal 7: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutOpt7Eng",
+          "type": "text",
+          "desc": "Optional Internal 7: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutOpt8",
+          "type": "text",
+          "desc": "Optional Internal 8: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutOpt8Eng",
+          "type": "text",
+          "desc": "Optional Internal 8: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutOpt9",
+          "type": "text",
+          "desc": "Optional Internal 9: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutOpt9Eng",
+          "type": "text",
+          "desc": "Optional Internal 9: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutOpt10",
+          "type": "text",
+          "desc": "Optional Internal 10: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutOpt10Eng",
+          "type": "text",
+          "desc": "Optional Internal 10: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutOpt11",
+          "type": "text",
+          "desc": "Optional Internal 11: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutOpt11Eng",
+          "type": "text",
+          "desc": "Optional Internal 11: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutOpt12",
+          "type": "text",
+          "desc": "Optional Internal 12: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutOpt12Eng",
+          "type": "text",
+          "desc": "Optional Internal 12: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutOpt13",
+          "type": "text",
+          "desc": "Optional Internal 13: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutOpt13Eng",
+          "type": "text",
+          "desc": "Optional Internal 13: engineered?",
+          "default": "false"
+        },
+        {
+          "id": "ed.ship.loadoutOpt14",
+          "type": "text",
+          "desc": "Optional Internal 14: equipped module (name/grade/engineering type)",
+          "default": "— empty —"
+        },
+        {
+          "id": "ed.ship.loadoutOpt14Eng",
+          "type": "text",
+          "desc": "Optional Internal 14: engineered?",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "id": "ed.ship.event.legalState",
+          "type": "communicate",
+          "name": "When the Legal State changes",
+          "format": "When the Legal State becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "Clean",
+            "IllegalCargo",
+            "Speeding",
+            "Wanted",
+            "Hostile",
+            "PassengerWanted",
+            "Warrant"
+          ],
+          "valueStateId": "ed.ship.legalState"
+        },
+        {
+          "id": "ed.ship.event.guiFocus",
+          "type": "communicate",
+          "name": "When the Focused Panel changes",
+          "format": "When the Focused Panel becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "NoFocus",
+            "InternalPanel",
+            "ExternalPanel",
+            "CommsPanel",
+            "RolePanel",
+            "StationServices",
+            "GalaxyMap",
+            "SystemMap",
+            "Orrery",
+            "FSS mode",
+            "SAA mode",
+            "Codex"
+          ],
+          "valueStateId": "ed.ship.guiFocus"
+        },
+        {
+          "id": "ed.ship.event.isDocked",
+          "type": "communicate",
+          "name": "When it changes: Docked",
+          "format": "When \"Docked\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.isDocked"
+        },
+        {
+          "id": "ed.ship.event.isLanded",
+          "type": "communicate",
+          "name": "When it changes: Landed on a surface",
+          "format": "When \"Landed on a surface\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.isLanded"
+        },
+        {
+          "id": "ed.ship.event.isLandingGearDown",
+          "type": "communicate",
+          "name": "When it changes: Landing gear down",
+          "format": "When \"Landing gear down\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.isLandingGearDown"
+        },
+        {
+          "id": "ed.ship.event.areShieldsUp",
+          "type": "communicate",
+          "name": "When it changes: Shields up",
+          "format": "When \"Shields up\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.areShieldsUp"
+        },
+        {
+          "id": "ed.ship.event.isSupercruise",
+          "type": "communicate",
+          "name": "When it changes: In supercruise",
+          "format": "When \"In supercruise\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.isSupercruise"
+        },
+        {
+          "id": "ed.ship.event.isFlightAssistOff",
+          "type": "communicate",
+          "name": "When it changes: Flight Assist off",
+          "format": "When \"Flight Assist off\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.isFlightAssistOff"
+        },
+        {
+          "id": "ed.ship.event.areHardpointsDeployed",
+          "type": "communicate",
+          "name": "When it changes: Hardpoints deployed",
+          "format": "When \"Hardpoints deployed\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.areHardpointsDeployed"
+        },
+        {
+          "id": "ed.ship.event.isInWing",
+          "type": "communicate",
+          "name": "When it changes: In a Wing",
+          "format": "When \"In a Wing\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.isInWing"
+        },
+        {
+          "id": "ed.ship.event.areLightsOn",
+          "type": "communicate",
+          "name": "When it changes: Lights on",
+          "format": "When \"Lights on\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.areLightsOn"
+        },
+        {
+          "id": "ed.ship.event.isCargoScoopDeployed",
+          "type": "communicate",
+          "name": "When it changes: Cargo scoop deployed",
+          "format": "When \"Cargo scoop deployed\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.isCargoScoopDeployed"
+        },
+        {
+          "id": "ed.ship.event.isSilentRunning",
+          "type": "communicate",
+          "name": "When it changes: Silent Running on",
+          "format": "When \"Silent Running on\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.isSilentRunning"
+        },
+        {
+          "id": "ed.ship.event.isScoopingFuel",
+          "type": "communicate",
+          "name": "When it changes: Scooping fuel",
+          "format": "When \"Scooping fuel\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.isScoopingFuel"
+        },
+        {
+          "id": "ed.ship.event.isSRVHandbrake",
+          "type": "communicate",
+          "name": "When it changes: SRV handbrake on",
+          "format": "When \"SRV handbrake on\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.isSRVHandbrake"
+        },
+        {
+          "id": "ed.ship.event.isSRVUsingTurretView",
+          "type": "communicate",
+          "name": "When it changes: SRV using turret view",
+          "format": "When \"SRV using turret view\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.isSRVUsingTurretView"
+        },
+        {
+          "id": "ed.ship.event.isSRVTurretRetracted",
+          "type": "communicate",
+          "name": "When it changes: SRV turret retracted",
+          "format": "When \"SRV turret retracted\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.isSRVTurretRetracted"
+        },
+        {
+          "id": "ed.ship.event.isSRVDriveAssist",
+          "type": "communicate",
+          "name": "When it changes: SRV Drive Assist on",
+          "format": "When \"SRV Drive Assist on\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.isSRVDriveAssist"
+        },
+        {
+          "id": "ed.ship.event.isFSDMassLocked",
+          "type": "communicate",
+          "name": "When it changes: FSD mass locked",
+          "format": "When \"FSD mass locked\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.isFSDMassLocked"
+        },
+        {
+          "id": "ed.ship.event.isFSDCharging",
+          "type": "communicate",
+          "name": "When it changes: FSD charging",
+          "format": "When \"FSD charging\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.isFSDCharging"
+        },
+        {
+          "id": "ed.ship.event.isFSDCooldown",
+          "type": "communicate",
+          "name": "When it changes: FSD cooldown",
+          "format": "When \"FSD cooldown\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.isFSDCooldown"
+        },
+        {
+          "id": "ed.ship.event.isLowFuel",
+          "type": "communicate",
+          "name": "When it changes: Low fuel (<25%)",
+          "format": "When \"Low fuel (<25%)\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.isLowFuel"
+        },
+        {
+          "id": "ed.ship.event.isOverHeating",
+          "type": "communicate",
+          "name": "When it changes: Overheating (>100%)",
+          "format": "When \"Overheating (>100%)\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.isOverHeating"
+        },
+        {
+          "id": "ed.ship.event.hasLatLong",
+          "type": "communicate",
+          "name": "When it changes: Has valid surface coordinates",
+          "format": "When \"Has valid surface coordinates\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.hasLatLong"
+        },
+        {
+          "id": "ed.ship.event.isInDanger",
+          "type": "communicate",
+          "name": "When it changes: In danger",
+          "format": "When \"In danger\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.isInDanger"
+        },
+        {
+          "id": "ed.ship.event.isBeingInterdicted",
+          "type": "communicate",
+          "name": "When it changes: Being interdicted",
+          "format": "When \"Being interdicted\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.isBeingInterdicted"
+        },
+        {
+          "id": "ed.ship.event.isInMainShip",
+          "type": "communicate",
+          "name": "When it changes: In main ship",
+          "format": "When \"In main ship\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.isInMainShip"
+        },
+        {
+          "id": "ed.ship.event.isInFighter",
+          "type": "communicate",
+          "name": "When it changes: In fighter",
+          "format": "When \"In fighter\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.isInFighter"
+        },
+        {
+          "id": "ed.ship.event.isInSRV",
+          "type": "communicate",
+          "name": "When it changes: In SRV",
+          "format": "When \"In SRV\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.isInSRV"
+        },
+        {
+          "id": "ed.ship.event.isHUDInAnalysisMode",
+          "type": "communicate",
+          "name": "When it changes: HUD in Analysis mode",
+          "format": "When \"HUD in Analysis mode\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.isHUDInAnalysisMode"
+        },
+        {
+          "id": "ed.ship.event.isNightVision",
+          "type": "communicate",
+          "name": "When it changes: Night vision on",
+          "format": "When \"Night vision on\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.isNightVision"
+        },
+        {
+          "id": "ed.ship.event.isAltitudeFromAverageRadius",
+          "type": "communicate",
+          "name": "When it changes: Altitude from average radius",
+          "format": "When \"Altitude from average radius\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.isAltitudeFromAverageRadius"
+        },
+        {
+          "id": "ed.ship.event.isFSDJump",
+          "type": "communicate",
+          "name": "When it changes: FSD jump (hyperspace)",
+          "format": "When \"FSD jump (hyperspace)\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.isFSDJump"
+        },
+        {
+          "id": "ed.ship.event.isSRVHighBeam",
+          "type": "communicate",
+          "name": "When it changes: SRV high beam on",
+          "format": "When \"SRV high beam on\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.isSRVHighBeam"
+        },
+        {
+          "id": "ed.ship.event.loadoutHp1Eng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Hardpoint 1)",
+          "format": "When \"Hardpoint 1\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutHp1Eng"
+        },
+        {
+          "id": "ed.ship.event.loadoutHp2Eng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Hardpoint 2)",
+          "format": "When \"Hardpoint 2\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutHp2Eng"
+        },
+        {
+          "id": "ed.ship.event.loadoutHp3Eng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Hardpoint 3)",
+          "format": "When \"Hardpoint 3\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutHp3Eng"
+        },
+        {
+          "id": "ed.ship.event.loadoutHp4Eng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Hardpoint 4)",
+          "format": "When \"Hardpoint 4\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutHp4Eng"
+        },
+        {
+          "id": "ed.ship.event.loadoutHp5Eng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Hardpoint 5)",
+          "format": "When \"Hardpoint 5\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutHp5Eng"
+        },
+        {
+          "id": "ed.ship.event.loadoutHp6Eng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Hardpoint 6)",
+          "format": "When \"Hardpoint 6\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutHp6Eng"
+        },
+        {
+          "id": "ed.ship.event.loadoutHp7Eng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Hardpoint 7)",
+          "format": "When \"Hardpoint 7\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutHp7Eng"
+        },
+        {
+          "id": "ed.ship.event.loadoutHp8Eng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Hardpoint 8)",
+          "format": "When \"Hardpoint 8\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutHp8Eng"
+        },
+        {
+          "id": "ed.ship.event.loadoutUt1Eng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Utility 1)",
+          "format": "When \"Utility 1\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutUt1Eng"
+        },
+        {
+          "id": "ed.ship.event.loadoutUt2Eng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Utility 2)",
+          "format": "When \"Utility 2\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutUt2Eng"
+        },
+        {
+          "id": "ed.ship.event.loadoutUt3Eng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Utility 3)",
+          "format": "When \"Utility 3\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutUt3Eng"
+        },
+        {
+          "id": "ed.ship.event.loadoutUt4Eng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Utility 4)",
+          "format": "When \"Utility 4\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutUt4Eng"
+        },
+        {
+          "id": "ed.ship.event.loadoutUt5Eng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Utility 5)",
+          "format": "When \"Utility 5\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutUt5Eng"
+        },
+        {
+          "id": "ed.ship.event.loadoutUt6Eng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Utility 6)",
+          "format": "When \"Utility 6\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutUt6Eng"
+        },
+        {
+          "id": "ed.ship.event.loadoutUt7Eng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Utility 7)",
+          "format": "When \"Utility 7\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutUt7Eng"
+        },
+        {
+          "id": "ed.ship.event.loadoutUt8Eng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Utility 8)",
+          "format": "When \"Utility 8\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutUt8Eng"
+        },
+        {
+          "id": "ed.ship.event.loadoutCorePowerPlantEng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Power Plant)",
+          "format": "When \"Power Plant\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutCorePowerPlantEng"
+        },
+        {
+          "id": "ed.ship.event.loadoutCoreMainEnginesEng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Thrusters)",
+          "format": "When \"Thrusters\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutCoreMainEnginesEng"
+        },
+        {
+          "id": "ed.ship.event.loadoutCoreFrameShiftDriveEng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (FSD)",
+          "format": "When \"FSD\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutCoreFrameShiftDriveEng"
+        },
+        {
+          "id": "ed.ship.event.loadoutCoreLifeSupportEng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Life Support)",
+          "format": "When \"Life Support\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutCoreLifeSupportEng"
+        },
+        {
+          "id": "ed.ship.event.loadoutCorePowerDistributorEng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Power Distributor)",
+          "format": "When \"Power Distributor\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutCorePowerDistributorEng"
+        },
+        {
+          "id": "ed.ship.event.loadoutCoreRadarEng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Sensors)",
+          "format": "When \"Sensors\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutCoreRadarEng"
+        },
+        {
+          "id": "ed.ship.event.loadoutCoreFuelTankEng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Fuel Tank)",
+          "format": "When \"Fuel Tank\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutCoreFuelTankEng"
+        },
+        {
+          "id": "ed.ship.event.loadoutCoreArmourEng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Armour)",
+          "format": "When \"Armour\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutCoreArmourEng"
+        },
+        {
+          "id": "ed.ship.event.loadoutOpt1Eng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Optional Internal 1)",
+          "format": "When \"Optional Internal 1\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutOpt1Eng"
+        },
+        {
+          "id": "ed.ship.event.loadoutOpt2Eng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Optional Internal 2)",
+          "format": "When \"Optional Internal 2\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutOpt2Eng"
+        },
+        {
+          "id": "ed.ship.event.loadoutOpt3Eng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Optional Internal 3)",
+          "format": "When \"Optional Internal 3\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutOpt3Eng"
+        },
+        {
+          "id": "ed.ship.event.loadoutOpt4Eng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Optional Internal 4)",
+          "format": "When \"Optional Internal 4\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutOpt4Eng"
+        },
+        {
+          "id": "ed.ship.event.loadoutOpt5Eng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Optional Internal 5)",
+          "format": "When \"Optional Internal 5\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutOpt5Eng"
+        },
+        {
+          "id": "ed.ship.event.loadoutOpt6Eng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Optional Internal 6)",
+          "format": "When \"Optional Internal 6\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutOpt6Eng"
+        },
+        {
+          "id": "ed.ship.event.loadoutOpt7Eng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Optional Internal 7)",
+          "format": "When \"Optional Internal 7\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutOpt7Eng"
+        },
+        {
+          "id": "ed.ship.event.loadoutOpt8Eng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Optional Internal 8)",
+          "format": "When \"Optional Internal 8\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutOpt8Eng"
+        },
+        {
+          "id": "ed.ship.event.loadoutOpt9Eng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Optional Internal 9)",
+          "format": "When \"Optional Internal 9\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutOpt9Eng"
+        },
+        {
+          "id": "ed.ship.event.loadoutOpt10Eng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Optional Internal 10)",
+          "format": "When \"Optional Internal 10\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutOpt10Eng"
+        },
+        {
+          "id": "ed.ship.event.loadoutOpt11Eng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Optional Internal 11)",
+          "format": "When \"Optional Internal 11\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutOpt11Eng"
+        },
+        {
+          "id": "ed.ship.event.loadoutOpt12Eng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Optional Internal 12)",
+          "format": "When \"Optional Internal 12\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutOpt12Eng"
+        },
+        {
+          "id": "ed.ship.event.loadoutOpt13Eng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Optional Internal 13)",
+          "format": "When \"Optional Internal 13\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutOpt13Eng"
+        },
+        {
+          "id": "ed.ship.event.loadoutOpt14Eng",
+          "type": "communicate",
+          "name": "When it changes: engineered? (Optional Internal 14)",
+          "format": "When \"Optional Internal 14\" engineered becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.ship.loadoutOpt14Eng"
+        }
+      ]
+    },
+    {
+      "id": "ed.cmdr",
+      "name": "CMDR / Pilot",
+      "imagepath": "%TP_PLUGIN_FOLDER%ed-touchportal-plugin/images/icon-24.png",
+      "actions": [],
+      "connectors": [],
+      "states": [
+        {
+          "id": "ed.cmdr.name",
+          "type": "text",
+          "desc": "Commander name",
+          "default": ""
+        },
+        {
+          "id": "ed.cmdr.credits",
+          "type": "text",
+          "desc": "Credits (approximate, see README)",
+          "default": "0"
+        },
+        {
+          "id": "ed.cmdr.combatRank",
+          "type": "text",
+          "desc": "Combat rank",
+          "default": "Harmless"
+        },
+        {
+          "id": "ed.cmdr.tradeRank",
+          "type": "text",
+          "desc": "Trade rank",
+          "default": "Penniless"
+        },
+        {
+          "id": "ed.cmdr.exploRank",
+          "type": "text",
+          "desc": "Exploration rank",
+          "default": "Aimless"
+        },
+        {
+          "id": "ed.cmdr.cqcRank",
+          "type": "text",
+          "desc": "CQC rank",
+          "default": "Helpless"
+        },
+        {
+          "id": "ed.cmdr.federationRank",
+          "type": "text",
+          "desc": "Federation rank",
+          "default": "None"
+        },
+        {
+          "id": "ed.cmdr.empireRank",
+          "type": "text",
+          "desc": "Empire rank",
+          "default": "None"
+        },
+        {
+          "id": "ed.cmdr.reputationFederation",
+          "type": "text",
+          "desc": "Federation reputation (-100..100)",
+          "default": "0"
+        },
+        {
+          "id": "ed.cmdr.reputationEmpire",
+          "type": "text",
+          "desc": "Empire reputation (-100..100)",
+          "default": "0"
+        },
+        {
+          "id": "ed.cmdr.reputationAlliance",
+          "type": "text",
+          "desc": "Alliance reputation (-100..100)",
+          "default": "0"
+        },
+        {
+          "id": "ed.cmdr.reputationIndependent",
+          "type": "text",
+          "desc": "Independent reputation (-100..100)",
+          "default": "0"
+        },
+        {
+          "id": "ed.cmdr.shipType",
+          "type": "text",
+          "desc": "Current ship type",
+          "default": ""
+        },
+        {
+          "id": "ed.cmdr.shipName",
+          "type": "text",
+          "desc": "Current ship name",
+          "default": ""
+        },
+        {
+          "id": "ed.cmdr.shipIdent",
+          "type": "text",
+          "desc": "Current ship ID",
+          "default": ""
+        },
+        {
+          "id": "ed.cmdr.fuelCapacityMain",
+          "type": "text",
+          "desc": "Main tank capacity (t)",
+          "default": "0"
+        },
+        {
+          "id": "ed.cmdr.fuelCapacityReserve",
+          "type": "text",
+          "desc": "Reservoir capacity (t)",
+          "default": "0"
+        }
+      ],
+      "events": [
+        {
+          "id": "ed.cmdr.event.shipType",
+          "type": "communicate",
+          "name": "When the Ship Type changes",
+          "format": "When the ship becomes $val",
+          "valueType": "text",
+          "valueStateId": "ed.cmdr.shipType"
+        },
+        {
+          "id": "ed.cmdr.event.combatRank",
+          "type": "communicate",
+          "name": "When the Combat Rank changes",
+          "format": "When the Combat Rank becomes $val",
+          "valueType": "text",
+          "valueStateId": "ed.cmdr.combatRank"
+        },
+        {
+          "id": "ed.cmdr.event.tradeRank",
+          "type": "communicate",
+          "name": "When the Trade Rank changes",
+          "format": "When the Trade Rank becomes $val",
+          "valueType": "text",
+          "valueStateId": "ed.cmdr.tradeRank"
+        },
+        {
+          "id": "ed.cmdr.event.exploRank",
+          "type": "communicate",
+          "name": "When the Exploration Rank changes",
+          "format": "When the Exploration Rank becomes $val",
+          "valueType": "text",
+          "valueStateId": "ed.cmdr.exploRank"
+        }
+      ]
+    },
+    {
+      "id": "ed.nav",
+      "name": "Navigation",
+      "imagepath": "%TP_PLUGIN_FOLDER%ed-touchportal-plugin/images/icon-24.png",
+      "actions": [],
+      "connectors": [],
+      "states": [
+        {
+          "id": "ed.nav.currentSystem",
+          "type": "text",
+          "desc": "Current system",
+          "default": ""
+        },
+        {
+          "id": "ed.nav.currentBody",
+          "type": "text",
+          "desc": "Current body/station",
+          "default": ""
+        },
+        {
+          "id": "ed.nav.starClass",
+          "type": "text",
+          "desc": "Main star class",
+          "default": ""
+        },
+        {
+          "id": "ed.nav.systemSecurity",
+          "type": "text",
+          "desc": "System security",
+          "default": ""
+        },
+        {
+          "id": "ed.nav.systemAllegiance",
+          "type": "text",
+          "desc": "System allegiance",
+          "default": ""
+        },
+        {
+          "id": "ed.nav.systemGovernment",
+          "type": "text",
+          "desc": "System government",
+          "default": ""
+        },
+        {
+          "id": "ed.nav.systemEconomy",
+          "type": "text",
+          "desc": "System economy",
+          "default": ""
+        },
+        {
+          "id": "ed.nav.population",
+          "type": "text",
+          "desc": "System population",
+          "default": "0"
+        },
+        {
+          "id": "ed.nav.nextSystem",
+          "type": "text",
+          "desc": "Next destination on the route",
+          "default": ""
+        },
+        {
+          "id": "ed.nav.jumpsRemaining",
+          "type": "text",
+          "desc": "Jumps remaining on the plotted route",
+          "default": "0"
+        },
+        {
+          "id": "ed.nav.lastJumpDistance",
+          "type": "text",
+          "desc": "Distance of the last jump (ly)",
+          "default": "0"
+        },
+        {
+          "id": "ed.nav.lastJumpFuelUsed",
+          "type": "text",
+          "desc": "Fuel used in the last jump (t)",
+          "default": "0"
+        },
+        {
+          "id": "ed.nav.isJumping",
+          "type": "text",
+          "desc": "Jumping right now (pulse)",
+          "default": "false"
+        },
+        {
+          "id": "ed.nav.jumpType",
+          "type": "text",
+          "desc": "Type of jump started (Hyperspace/Supercruise)",
+          "default": ""
+        },
+        {
+          "id": "ed.nav.dockingRequestStatus",
+          "type": "text",
+          "desc": "Docking request status",
+          "default": ""
+        },
+        {
+          "id": "ed.nav.dockingGrantedPad",
+          "type": "text",
+          "desc": "Granted docking pad",
+          "default": ""
+        },
+        {
+          "id": "ed.nav.isTouchdown",
+          "type": "text",
+          "desc": "Surface touchdown occurred (pulse)",
+          "default": "false"
+        },
+        {
+          "id": "ed.nav.isLiftoff",
+          "type": "text",
+          "desc": "Surface liftoff occurred (pulse)",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "id": "ed.nav.event.currentSystem",
+          "type": "communicate",
+          "name": "When the Current System changes",
+          "format": "On arrival at $val",
+          "valueType": "text",
+          "valueStateId": "ed.nav.currentSystem"
+        },
+        {
+          "id": "ed.nav.event.dockingRequestStatus",
+          "type": "communicate",
+          "name": "When the Docking Status changes",
+          "format": "When the docking status becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "Requested",
+            "Cancelled",
+            "Denied",
+            "Granted",
+            "Timeout",
+            ""
+          ],
+          "valueStateId": "ed.nav.dockingRequestStatus"
+        },
+        {
+          "id": "ed.nav.event.isJumping",
+          "type": "communicate",
+          "name": "When an FSD jump starts/ends",
+          "format": "FSD jump: $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.nav.isJumping"
+        },
+        {
+          "id": "ed.nav.event.isTouchdown",
+          "type": "communicate",
+          "name": "When touching down on a surface",
+          "format": "Surface touchdown: $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.nav.isTouchdown"
+        },
+        {
+          "id": "ed.nav.event.isLiftoff",
+          "type": "communicate",
+          "name": "When lifting off from a surface",
+          "format": "Surface liftoff: $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.nav.isLiftoff"
+        }
+      ]
+    },
+    {
+      "id": "ed.combat",
+      "name": "Combat",
+      "imagepath": "%TP_PLUGIN_FOLDER%ed-touchportal-plugin/images/icon-24.png",
+      "actions": [],
+      "connectors": [],
+      "states": [
+        {
+          "id": "ed.combat.isUnderAttack",
+          "type": "text",
+          "desc": "Under attack (pulse)",
+          "default": "false"
+        },
+        {
+          "id": "ed.combat.isInterdicted",
+          "type": "text",
+          "desc": "Being interdicted (pulse)",
+          "default": "false"
+        },
+        {
+          "id": "ed.combat.lastInterdictorName",
+          "type": "text",
+          "desc": "Last interdictor",
+          "default": ""
+        },
+        {
+          "id": "ed.combat.escapedInterdiction",
+          "type": "text",
+          "desc": "Interdiction escaped (pulse)",
+          "default": "false"
+        },
+        {
+          "id": "ed.combat.lastBountyAmount",
+          "type": "text",
+          "desc": "Last bounty amount",
+          "default": "0"
+        },
+        {
+          "id": "ed.combat.lastBountyFaction",
+          "type": "text",
+          "desc": "Last bounty faction",
+          "default": ""
+        },
+        {
+          "id": "ed.combat.sessionBountyTotal",
+          "type": "text",
+          "desc": "Bounty total this session",
+          "default": "0"
+        },
+        {
+          "id": "ed.combat.lastKillbondAmount",
+          "type": "text",
+          "desc": "Last combat bond amount",
+          "default": "0"
+        },
+        {
+          "id": "ed.combat.deathsSession",
+          "type": "text",
+          "desc": "Deaths this session",
+          "default": "0"
+        },
+        {
+          "id": "ed.combat.lastDiedKilledBy",
+          "type": "text",
+          "desc": "Last death caused by",
+          "default": ""
+        },
+        {
+          "id": "ed.combat.hullHealthPercent",
+          "type": "text",
+          "desc": "Last reported hull health %",
+          "default": "100"
+        },
+        {
+          "id": "ed.combat.heatWarning",
+          "type": "text",
+          "desc": "Heat warning (pulse)",
+          "default": "false"
+        },
+        {
+          "id": "ed.combat.shieldsDown",
+          "type": "text",
+          "desc": "Shields down (pulse)",
+          "default": "false"
+        },
+        {
+          "id": "ed.combat.targetName",
+          "type": "text",
+          "desc": "Target name",
+          "default": ""
+        },
+        {
+          "id": "ed.combat.targetShip",
+          "type": "text",
+          "desc": "Target ship type",
+          "default": ""
+        },
+        {
+          "id": "ed.combat.fighterDestroyed",
+          "type": "text",
+          "desc": "Fighter destroyed (pulse)",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "id": "ed.combat.event.isUnderAttack",
+          "type": "communicate",
+          "name": "When under attack",
+          "format": "Under attack: $val",
+          "valueType": "text",
+          "valueStateId": "ed.combat.isUnderAttack"
+        },
+        {
+          "id": "ed.combat.event.isInterdicted",
+          "type": "communicate",
+          "name": "When interdicted",
+          "format": "Interdicted: $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.combat.isInterdicted"
+        },
+        {
+          "id": "ed.combat.event.bounty",
+          "type": "communicate",
+          "name": "When a bounty is awarded",
+          "format": "Bounty awarded: $val",
+          "valueType": "text",
+          "valueStateId": "ed.combat.lastBountyAmount"
+        },
+        {
+          "id": "ed.combat.event.died",
+          "type": "communicate",
+          "name": "When you die",
+          "format": "You died (killed by: $val)",
+          "valueType": "text",
+          "valueStateId": "ed.combat.lastDiedKilledBy"
+        },
+        {
+          "id": "ed.combat.event.heatWarning",
+          "type": "communicate",
+          "name": "When there is a heat warning",
+          "format": "Heat warning: $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.combat.heatWarning"
+        },
+        {
+          "id": "ed.combat.event.shieldsDown",
+          "type": "communicate",
+          "name": "When shields go down",
+          "format": "Shields down: $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.combat.shieldsDown"
+        }
+      ]
+    },
+    {
+      "id": "ed.explo",
+      "name": "Exploration",
+      "imagepath": "%TP_PLUGIN_FOLDER%ed-touchportal-plugin/images/icon-24.png",
+      "actions": [],
+      "connectors": [],
+      "states": [
+        {
+          "id": "ed.explo.bodiesInSystem",
+          "type": "text",
+          "desc": "Bodies detected in system (FSS)",
+          "default": "0"
+        },
+        {
+          "id": "ed.explo.allBodiesFound",
+          "type": "text",
+          "desc": "All bodies found (pulse)",
+          "default": "false"
+        },
+        {
+          "id": "ed.explo.lastScannedBody",
+          "type": "text",
+          "desc": "Last scanned body",
+          "default": ""
+        },
+        {
+          "id": "ed.explo.lastScannedBodyType",
+          "type": "text",
+          "desc": "Last scanned body type",
+          "default": ""
+        },
+        {
+          "id": "ed.explo.lastMaterialCollected",
+          "type": "text",
+          "desc": "Last material collected",
+          "default": ""
+        },
+        {
+          "id": "ed.explo.sessionScansCount",
+          "type": "text",
+          "desc": "Scans this session",
+          "default": "0"
+        },
+        {
+          "id": "ed.explo.lastCodexEntry",
+          "type": "text",
+          "desc": "Last Codex entry discovered",
+          "default": ""
+        },
+        {
+          "id": "ed.explo.explorationDataSoldSession",
+          "type": "text",
+          "desc": "Exploration data sold (credits, session)",
+          "default": "0"
+        },
+        {
+          "id": "ed.explo.lastMappedBody",
+          "type": "text",
+          "desc": "Last mapped body (SAA)",
+          "default": ""
+        }
+      ],
+      "events": [
+        {
+          "id": "ed.explo.event.scan",
+          "type": "communicate",
+          "name": "When a body is scanned",
+          "format": "Scanned: $val",
+          "valueType": "text",
+          "valueStateId": "ed.explo.lastScannedBody"
+        },
+        {
+          "id": "ed.explo.event.allBodiesFound",
+          "type": "communicate",
+          "name": "When the system is fully scanned (FSS)",
+          "format": "System complete: $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.explo.allBodiesFound"
+        },
+        {
+          "id": "ed.explo.event.codex",
+          "type": "communicate",
+          "name": "When a Codex entry is discovered",
+          "format": "New Codex entry: $val",
+          "valueType": "text",
+          "valueStateId": "ed.explo.lastCodexEntry"
+        }
+      ]
+    },
+    {
+      "id": "ed.trade",
+      "name": "Trade / Mining",
+      "imagepath": "%TP_PLUGIN_FOLDER%ed-touchportal-plugin/images/icon-24.png",
+      "actions": [],
+      "connectors": [],
+      "states": [
+        {
+          "id": "ed.trade.lastCommodity",
+          "type": "text",
+          "desc": "Last commodity traded",
+          "default": ""
+        },
+        {
+          "id": "ed.trade.lastAction",
+          "type": "text",
+          "desc": "Last action (Buy/Sell)",
+          "default": ""
+        },
+        {
+          "id": "ed.trade.lastQty",
+          "type": "text",
+          "desc": "Last trade quantity",
+          "default": "0"
+        },
+        {
+          "id": "ed.trade.sessionProfit",
+          "type": "text",
+          "desc": "Trade profit this session (approx.)",
+          "default": "0"
+        },
+        {
+          "id": "ed.trade.lastMiningMaterial",
+          "type": "text",
+          "desc": "Last refined material (mining)",
+          "default": ""
+        },
+        {
+          "id": "ed.trade.sessionMiningCount",
+          "type": "text",
+          "desc": "Materials refined this session",
+          "default": "0"
+        },
+        {
+          "id": "ed.trade.lastCargoCollected",
+          "type": "text",
+          "desc": "Last cargo collected",
+          "default": ""
+        },
+        {
+          "id": "ed.trade.lastMaterialCollected",
+          "type": "text",
+          "desc": "Last raw material collected (SRV/on foot)",
+          "default": ""
+        },
+        {
+          "id": "ed.trade.shipCargoList",
+          "type": "text",
+          "desc": "Live ship cargo hold contents",
+          "default": "No data yet (board your ship or move cargo)"
+        },
+        {
+          "id": "ed.trade.shipCargoCount",
+          "type": "text",
+          "desc": "Total units in the ship cargo hold",
+          "default": "0"
+        },
+        {
+          "id": "ed.trade.shipCargoCapacity",
+          "type": "text",
+          "desc": "Ship cargo capacity (t), from the last Loadout",
+          "default": ""
+        },
+        {
+          "id": "ed.trade.srvCargoList",
+          "type": "text",
+          "desc": "Live SRV cargo hold contents",
+          "default": "No data yet (board the SRV or move cargo)"
+        },
+        {
+          "id": "ed.trade.srvCargoCount",
+          "type": "text",
+          "desc": "Total units in the SRV cargo hold",
+          "default": "0"
+        },
+        {
+          "id": "ed.trade.srvCargoCapacity",
+          "type": "text",
+          "desc": "Active SRV cargo capacity (t), by vehicle type",
+          "default": ""
+        }
+      ],
+      "events": [
+        {
+          "id": "ed.trade.event.commodity",
+          "type": "communicate",
+          "name": "When a commodity is bought or sold",
+          "format": "$val",
+          "valueType": "text",
+          "valueStateId": "ed.trade.lastCommodity"
+        },
+        {
+          "id": "ed.trade.event.mining",
+          "type": "communicate",
+          "name": "When a mined material is refined",
+          "format": "Refined: $val",
+          "valueType": "text",
+          "valueStateId": "ed.trade.lastMiningMaterial"
+        }
+      ]
+    },
+    {
+      "id": "ed.power",
+      "name": "Powerplay",
+      "imagepath": "%TP_PLUGIN_FOLDER%ed-touchportal-plugin/images/icon-24.png",
+      "actions": [
+        {
+          "id": "ed.power.action.resetMeritCounter",
+          "name": "Powerplay: Reset merit counter",
+          "prefix": "Powerplay",
+          "type": "communicate",
+          "format": "Powerplay: Reset gained merits counter"
+        }
+      ],
+      "connectors": [],
+      "states": [
+        {
+          "id": "ed.power.status",
+          "type": "text",
+          "desc": "Powerplay tracker status",
+          "default": "NO_DATA"
+        },
+        {
+          "id": "ed.power.name",
+          "type": "text",
+          "desc": "Pledged Power",
+          "default": ""
+        },
+        {
+          "id": "ed.power.color",
+          "type": "text",
+          "desc": "Power colour",
+          "default": "#f07b05"
+        },
+        {
+          "id": "ed.power.rank",
+          "type": "text",
+          "desc": "Current Powerplay rank",
+          "default": "0"
+        },
+        {
+          "id": "ed.power.nextRank",
+          "type": "text",
+          "desc": "Next Powerplay rank",
+          "default": "1"
+        },
+        {
+          "id": "ed.power.totalMerits",
+          "type": "text",
+          "desc": "Total merits",
+          "default": "0"
+        },
+        {
+          "id": "ed.power.gainedMerits",
+          "type": "text",
+          "desc": "Merits gained since last reset",
+          "default": "0"
+        },
+        {
+          "id": "ed.power.remainingMerits",
+          "type": "text",
+          "desc": "Merits remaining to next rank",
+          "default": "0"
+        },
+        {
+          "id": "ed.power.lastVoucherAmount",
+          "type": "text",
+          "desc": "Last Powerplay voucher amount",
+          "default": "0"
+        }
+      ],
+      "events": [
+        {
+          "id": "ed.power.event.rank",
+          "type": "communicate",
+          "name": "When the Powerplay Rank changes",
+          "format": "Powerplay rank: $val",
+          "valueType": "text",
+          "valueStateId": "ed.power.rank"
+        },
+        {
+          "id": "ed.power.event.power",
+          "type": "communicate",
+          "name": "When the Power changes",
+          "format": "Power: $val",
+          "valueType": "text",
+          "valueStateId": "ed.power.name"
+        },
+        {
+          "id": "ed.power.event.totalMerits",
+          "type": "communicate",
+          "name": "When Total Merits change",
+          "format": "Total merits: $val",
+          "valueType": "text",
+          "valueStateId": "ed.power.totalMerits"
+        }
+      ]
+    },
+    {
+      "id": "ed.missions",
+      "name": "Missions",
+      "imagepath": "%TP_PLUGIN_FOLDER%ed-touchportal-plugin/images/icon-24.png",
+      "actions": [],
+      "connectors": [],
+      "states": [
+        {
+          "id": "ed.missions.activeCount",
+          "type": "text",
+          "desc": "Active missions",
+          "default": "0"
+        },
+        {
+          "id": "ed.missions.lastAccepted",
+          "type": "text",
+          "desc": "Last accepted mission",
+          "default": ""
+        },
+        {
+          "id": "ed.missions.lastCompleted",
+          "type": "text",
+          "desc": "Last completed mission",
+          "default": ""
+        },
+        {
+          "id": "ed.missions.lastFailed",
+          "type": "text",
+          "desc": "Last failed mission",
+          "default": ""
+        },
+        {
+          "id": "ed.missions.completedSession",
+          "type": "text",
+          "desc": "Missions completed this session",
+          "default": "0"
+        },
+        {
+          "id": "ed.missions.failedSession",
+          "type": "text",
+          "desc": "Missions failed this session",
+          "default": "0"
+        }
+      ],
+      "events": [
+        {
+          "id": "ed.missions.event.accepted",
+          "type": "communicate",
+          "name": "When a mission is accepted",
+          "format": "Mission accepted: $val",
+          "valueType": "text",
+          "valueStateId": "ed.missions.lastAccepted"
+        },
+        {
+          "id": "ed.missions.event.completed",
+          "type": "communicate",
+          "name": "When a mission is completed",
+          "format": "Mission completed: $val",
+          "valueType": "text",
+          "valueStateId": "ed.missions.lastCompleted"
+        },
+        {
+          "id": "ed.missions.event.failed",
+          "type": "communicate",
+          "name": "When a mission fails",
+          "format": "Mission failed: $val",
+          "valueType": "text",
+          "valueStateId": "ed.missions.lastFailed"
+        }
+      ]
+    },
+    {
+      "id": "ed.station",
+      "name": "Station / Engineers",
+      "imagepath": "%TP_PLUGIN_FOLDER%ed-touchportal-plugin/images/icon-24.png",
+      "actions": [],
+      "connectors": [],
+      "states": [
+        {
+          "id": "ed.station.lastEngineer",
+          "type": "text",
+          "desc": "Last engineer visited/updated",
+          "default": ""
+        },
+        {
+          "id": "ed.station.lastEngineerRank",
+          "type": "text",
+          "desc": "Rank with that engineer",
+          "default": ""
+        },
+        {
+          "id": "ed.station.lastBlueprintApplied",
+          "type": "text",
+          "desc": "Last modification applied",
+          "default": ""
+        },
+        {
+          "id": "ed.station.communityGoalName",
+          "type": "text",
+          "desc": "Active Community Goal",
+          "default": ""
+        },
+        {
+          "id": "ed.station.communityGoalContribution",
+          "type": "text",
+          "desc": "Your Community Goal contribution",
+          "default": "0"
+        },
+        {
+          "id": "ed.station.communityGoalPosition",
+          "type": "text",
+          "desc": "Your Community Goal position",
+          "default": "0"
+        }
+      ],
+      "events": [
+        {
+          "id": "ed.station.event.blueprint",
+          "type": "communicate",
+          "name": "When an engineering modification is applied",
+          "format": "Modification applied: $val",
+          "valueType": "text",
+          "valueStateId": "ed.station.lastBlueprintApplied"
+        },
+        {
+          "id": "ed.station.event.communityGoal",
+          "type": "communicate",
+          "name": "When the Community Goal updates",
+          "format": "Community Goal: $val",
+          "valueType": "text",
+          "valueStateId": "ed.station.communityGoalName"
+        }
+      ]
+    },
+    {
+      "id": "ed.onfoot",
+      "name": "On Foot / Suits",
+      "imagepath": "%TP_PLUGIN_FOLDER%ed-touchportal-plugin/images/icon-24.png",
+      "actions": [],
+      "connectors": [],
+      "states": [
+        {
+          "id": "ed.onfoot.suitName",
+          "type": "text",
+          "desc": "Equipped suit",
+          "default": ""
+        },
+        {
+          "id": "ed.onfoot.lastBackpackItem",
+          "type": "text",
+          "desc": "Last backpack item picked up/dropped",
+          "default": ""
+        },
+        {
+          "id": "ed.onfoot.lastOrganicScanned",
+          "type": "text",
+          "desc": "Last organic species scanned",
+          "default": ""
+        },
+        {
+          "id": "ed.onfoot.lastOrganicStage",
+          "type": "text",
+          "desc": "Last organic scan stage (1/2/3)",
+          "default": ""
+        },
+        {
+          "id": "ed.onfoot.isEmbarked",
+          "type": "text",
+          "desc": "Embarked on taxi/dropship (pulse)",
+          "default": "false"
+        },
+        {
+          "id": "ed.onfoot.isOnFoot",
+          "type": "text",
+          "desc": "On foot",
+          "default": "false"
+        },
+        {
+          "id": "ed.onfoot.isInTaxi",
+          "type": "text",
+          "desc": "In taxi (Apex)",
+          "default": "false"
+        },
+        {
+          "id": "ed.onfoot.isInMulticrew",
+          "type": "text",
+          "desc": "In multicrew session",
+          "default": "false"
+        },
+        {
+          "id": "ed.onfoot.isOnFootInStation",
+          "type": "text",
+          "desc": "On foot in station",
+          "default": "false"
+        },
+        {
+          "id": "ed.onfoot.isOnFootOnPlanet",
+          "type": "text",
+          "desc": "On foot on planet",
+          "default": "false"
+        },
+        {
+          "id": "ed.onfoot.isAimDownSight",
+          "type": "text",
+          "desc": "Aiming down sight",
+          "default": "false"
+        },
+        {
+          "id": "ed.onfoot.isLowOxygen",
+          "type": "text",
+          "desc": "Low oxygen",
+          "default": "false"
+        },
+        {
+          "id": "ed.onfoot.isLowHealth",
+          "type": "text",
+          "desc": "Low health",
+          "default": "false"
+        },
+        {
+          "id": "ed.onfoot.isCold",
+          "type": "text",
+          "desc": "Cold",
+          "default": "false"
+        },
+        {
+          "id": "ed.onfoot.isHot",
+          "type": "text",
+          "desc": "Hot",
+          "default": "false"
+        },
+        {
+          "id": "ed.onfoot.isVeryCold",
+          "type": "text",
+          "desc": "Very cold",
+          "default": "false"
+        },
+        {
+          "id": "ed.onfoot.isVeryHot",
+          "type": "text",
+          "desc": "Very hot",
+          "default": "false"
+        },
+        {
+          "id": "ed.onfoot.isGlideMode",
+          "type": "text",
+          "desc": "Glide mode",
+          "default": "false"
+        },
+        {
+          "id": "ed.onfoot.isOnFootInHangar",
+          "type": "text",
+          "desc": "On foot in hangar",
+          "default": "false"
+        },
+        {
+          "id": "ed.onfoot.isOnFootSocialSpace",
+          "type": "text",
+          "desc": "On foot in social space",
+          "default": "false"
+        },
+        {
+          "id": "ed.onfoot.isOnFootExterior",
+          "type": "text",
+          "desc": "On foot outside",
+          "default": "false"
+        },
+        {
+          "id": "ed.onfoot.isBreathableAtmosphere",
+          "type": "text",
+          "desc": "Breathable atmosphere",
+          "default": "false"
+        },
+        {
+          "id": "ed.onfoot.isTelepresenceMulticrew",
+          "type": "text",
+          "desc": "Telepresence multicrew",
+          "default": "false"
+        },
+        {
+          "id": "ed.onfoot.isPhysicalMulticrew",
+          "type": "text",
+          "desc": "Physical multicrew (on board)",
+          "default": "false"
+        },
+        {
+          "id": "ed.onfoot.isFsdHyperdriveCharging",
+          "type": "text",
+          "desc": "FSD hyperdrive charging (new)",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "id": "ed.onfoot.event.suitName",
+          "type": "communicate",
+          "name": "When the equipped Suit changes",
+          "format": "When the equipped suit becomes $val",
+          "valueType": "text",
+          "valueStateId": "ed.onfoot.suitName"
+        },
+        {
+          "id": "ed.onfoot.event.organicScanned",
+          "type": "communicate",
+          "name": "When an organic species is scanned",
+          "format": "Scanned: $val",
+          "valueType": "text",
+          "valueStateId": "ed.onfoot.lastOrganicScanned"
+        },
+        {
+          "id": "ed.onfoot.event.isOnFoot",
+          "type": "communicate",
+          "name": "When it changes: On foot",
+          "format": "When \"On foot\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.onfoot.isOnFoot"
+        },
+        {
+          "id": "ed.onfoot.event.isInTaxi",
+          "type": "communicate",
+          "name": "When it changes: In taxi (Apex)",
+          "format": "When \"In taxi (Apex)\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.onfoot.isInTaxi"
+        },
+        {
+          "id": "ed.onfoot.event.isInMulticrew",
+          "type": "communicate",
+          "name": "When it changes: In multicrew session",
+          "format": "When \"In multicrew session\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.onfoot.isInMulticrew"
+        },
+        {
+          "id": "ed.onfoot.event.isOnFootInStation",
+          "type": "communicate",
+          "name": "When it changes: On foot in station",
+          "format": "When \"On foot in station\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.onfoot.isOnFootInStation"
+        },
+        {
+          "id": "ed.onfoot.event.isOnFootOnPlanet",
+          "type": "communicate",
+          "name": "When it changes: On foot on planet",
+          "format": "When \"On foot on planet\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.onfoot.isOnFootOnPlanet"
+        },
+        {
+          "id": "ed.onfoot.event.isAimDownSight",
+          "type": "communicate",
+          "name": "When it changes: Aiming down sight",
+          "format": "When \"Aiming down sight\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.onfoot.isAimDownSight"
+        },
+        {
+          "id": "ed.onfoot.event.isLowOxygen",
+          "type": "communicate",
+          "name": "When it changes: Low oxygen",
+          "format": "When \"Low oxygen\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.onfoot.isLowOxygen"
+        },
+        {
+          "id": "ed.onfoot.event.isLowHealth",
+          "type": "communicate",
+          "name": "When it changes: Low health",
+          "format": "When \"Low health\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.onfoot.isLowHealth"
+        },
+        {
+          "id": "ed.onfoot.event.isCold",
+          "type": "communicate",
+          "name": "When it changes: Cold",
+          "format": "When \"Cold\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.onfoot.isCold"
+        },
+        {
+          "id": "ed.onfoot.event.isHot",
+          "type": "communicate",
+          "name": "When it changes: Hot",
+          "format": "When \"Hot\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.onfoot.isHot"
+        },
+        {
+          "id": "ed.onfoot.event.isVeryCold",
+          "type": "communicate",
+          "name": "When it changes: Very cold",
+          "format": "When \"Very cold\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.onfoot.isVeryCold"
+        },
+        {
+          "id": "ed.onfoot.event.isVeryHot",
+          "type": "communicate",
+          "name": "When it changes: Very hot",
+          "format": "When \"Very hot\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.onfoot.isVeryHot"
+        },
+        {
+          "id": "ed.onfoot.event.isGlideMode",
+          "type": "communicate",
+          "name": "When it changes: Glide mode",
+          "format": "When \"Glide mode\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.onfoot.isGlideMode"
+        },
+        {
+          "id": "ed.onfoot.event.isOnFootInHangar",
+          "type": "communicate",
+          "name": "When it changes: On foot in hangar",
+          "format": "When \"On foot in hangar\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.onfoot.isOnFootInHangar"
+        },
+        {
+          "id": "ed.onfoot.event.isOnFootSocialSpace",
+          "type": "communicate",
+          "name": "When it changes: On foot in social space",
+          "format": "When \"On foot in social space\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.onfoot.isOnFootSocialSpace"
+        },
+        {
+          "id": "ed.onfoot.event.isOnFootExterior",
+          "type": "communicate",
+          "name": "When it changes: On foot outside",
+          "format": "When \"On foot outside\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.onfoot.isOnFootExterior"
+        },
+        {
+          "id": "ed.onfoot.event.isBreathableAtmosphere",
+          "type": "communicate",
+          "name": "When it changes: Breathable atmosphere",
+          "format": "When \"Breathable atmosphere\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.onfoot.isBreathableAtmosphere"
+        },
+        {
+          "id": "ed.onfoot.event.isTelepresenceMulticrew",
+          "type": "communicate",
+          "name": "When it changes: Telepresence multicrew",
+          "format": "When \"Telepresence multicrew\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.onfoot.isTelepresenceMulticrew"
+        },
+        {
+          "id": "ed.onfoot.event.isPhysicalMulticrew",
+          "type": "communicate",
+          "name": "When it changes: Physical multicrew (on board)",
+          "format": "When \"Physical multicrew (on board)\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.onfoot.isPhysicalMulticrew"
+        },
+        {
+          "id": "ed.onfoot.event.isFsdHyperdriveCharging",
+          "type": "communicate",
+          "name": "When it changes: FSD hyperdrive charging (new)",
+          "format": "When \"FSD hyperdrive charging (new)\" becomes $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "true",
+            "false"
+          ],
+          "valueStateId": "ed.onfoot.isFsdHyperdriveCharging"
+        }
+      ]
+    },
+    {
+      "id": "ed.carrier",
+      "name": "Fleet Carrier",
+      "imagepath": "%TP_PLUGIN_FOLDER%ed-touchportal-plugin/images/icon-24.png",
+      "actions": [],
+      "connectors": [],
+      "states": [
+        {
+          "id": "ed.carrier.name",
+          "type": "text",
+          "desc": "Fleet Carrier name",
+          "default": ""
+        },
+        {
+          "id": "ed.carrier.callsign",
+          "type": "text",
+          "desc": "Fleet Carrier callsign",
+          "default": ""
+        },
+        {
+          "id": "ed.carrier.fuelLevel",
+          "type": "text",
+          "desc": "Tritium level",
+          "default": "0"
+        },
+        {
+          "id": "ed.carrier.balance",
+          "type": "text",
+          "desc": "Fleet Carrier balance",
+          "default": "0"
+        },
+        {
+          "id": "ed.carrier.jumpDestination",
+          "type": "text",
+          "desc": "Next jump destination",
+          "default": ""
+        },
+        {
+          "id": "ed.carrier.jumpTime",
+          "type": "text",
+          "desc": "Scheduled jump time (UTC)",
+          "default": ""
+        },
+        {
+          "id": "ed.carrier.jumpScheduled",
+          "type": "text",
+          "desc": "Jump scheduled (pulse)",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "id": "ed.carrier.event.jumpScheduled",
+          "type": "communicate",
+          "name": "When a Fleet Carrier jump is scheduled",
+          "format": "Carrier jump scheduled to: $val",
+          "valueType": "text",
+          "valueStateId": "ed.carrier.jumpDestination"
+        }
+      ]
+    },
+    {
+      "id": "ed.squadron",
+      "name": "Squadron",
+      "imagepath": "%TP_PLUGIN_FOLDER%ed-touchportal-plugin/images/icon-24.png",
+      "actions": [],
+      "connectors": [],
+      "states": [
+        {
+          "id": "ed.squadron.name",
+          "type": "text",
+          "desc": "Squadron name",
+          "default": ""
+        },
+        {
+          "id": "ed.squadron.rank",
+          "type": "text",
+          "desc": "Squadron rank",
+          "default": ""
+        },
+        {
+          "id": "ed.squadron.lastEvent",
+          "type": "text",
+          "desc": "Last Squadron event",
+          "default": ""
+        }
+      ],
+      "events": [
+        {
+          "id": "ed.squadron.event.lastEvent",
+          "type": "communicate",
+          "name": "When a Squadron event occurs",
+          "format": "Squadron: $val",
+          "valueType": "text",
+          "valueStateId": "ed.squadron.lastEvent"
+        }
+      ]
+    },
+    {
+      "id": "ed.meta",
+      "name": "Plugin Utilities",
+      "imagepath": "%TP_PLUGIN_FOLDER%ed-touchportal-plugin/images/icon-24.png",
+      "actions": [
+        {
+          "id": "ed.meta.action.resetSession",
+          "name": "Reset session counters",
+          "prefix": "Plugin Utilities",
+          "type": "communicate",
+          "format": "Reset all session counters (combat, trade, missions, powerplay...)"
+        },
+        {
+          "id": "ed.meta.action.reloadJournal",
+          "name": "Reload Journal from the start",
+          "prefix": "Plugin Utilities",
+          "type": "communicate",
+          "format": "Re-read the current Journal from the start"
+        },
+        {
+          "id": "ed.meta.action.openInara",
+          "name": "Open Inara for the current system",
+          "prefix": "Plugin Utilities",
+          "type": "communicate",
+          "format": "Open the current system's Inara page in the browser"
+        },
+        {
+          "id": "ed.meta.action.openEDSM",
+          "name": "Open EDSM for the current system",
+          "prefix": "Plugin Utilities",
+          "type": "communicate",
+          "format": "Open the current system's EDSM page in the browser"
+        },
+        {
+          "id": "ed.meta.action.copySystemToClipboard",
+          "name": "Copy current system to clipboard",
+          "prefix": "Plugin Utilities",
+          "type": "communicate",
+          "format": "Copy the current system name to the clipboard"
+        },
+        {
+          "id": "ed.meta.action.exportSessionStats",
+          "name": "Export session stats to file",
+          "prefix": "Plugin Utilities",
+          "type": "communicate",
+          "format": "Export a summary of the current session to a JSON file"
+        }
+      ],
+      "connectors": [],
+      "states": [
+        {
+          "id": "ed.meta.status",
+          "type": "text",
+          "desc": "Plugin status",
+          "default": "STARTING"
+        },
+        {
+          "id": "ed.meta.lastEventName",
+          "type": "text",
+          "desc": "Last Journal event received",
+          "default": ""
+        },
+        {
+          "id": "ed.meta.sessionStart",
+          "type": "text",
+          "desc": "Plugin session start time",
+          "default": ""
+        }
+      ],
+      "events": [
+        {
+          "id": "ed.meta.event.status",
+          "type": "communicate",
+          "name": "When the plugin status changes",
+          "format": "Plugin status: $val",
+          "valueType": "choice",
+          "valueChoices": [
+            "STARTING",
+            "CONNECTED",
+            "NO_JOURNAL",
+            "ERROR"
+          ],
+          "valueStateId": "ed.meta.status"
+        }
+      ]
+    }
+  ]
+}

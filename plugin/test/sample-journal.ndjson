@@ -1,0 +1,23 @@
+{"timestamp":"2026-08-24T10:00:00Z","event":"Commander","FID":"F123456","Name":"Adder"}
+{"timestamp":"2026-08-24T10:00:01Z","event":"LoadGame","Commander":"Adder","Ship":"Anaconda","ShipID":1,"ShipName":"Serenity","ShipIdent":"AD-01R","FuelLevel":32,"FuelCapacity":32,"GameMode":"Open","Credits":123456789,"Loan":0}
+{"timestamp":"2026-08-24T10:00:02Z","event":"Rank","Combat":5,"Trade":3,"Explore":4,"CQC":0,"Empire":2,"Federation":1}
+{"timestamp":"2026-08-24T10:00:03Z","event":"Reputation","Federation":45.5,"Empire":-10.2,"Alliance":0,"Independent":5}
+{"timestamp":"2026-08-24T10:00:04Z","event":"Loadout","Ship":"Anaconda","ShipID":1,"ShipName":"Serenity","ShipIdent":"AD-01R","FuelCapacity":{"Main":32,"Reserve":0.63},"CargoCapacity":220}
+{"timestamp":"2026-08-24T10:00:05Z","event":"Location","StarSystem":"Shinrarta Dezhra","Body":"Jameson Memorial","SystemAllegiance":"Independent","SystemGovernment_Localised":"Democracy","SystemEconomy_Localised":"High Tech","SystemSecurity_Localised":"High","Population":85206}
+{"timestamp":"2026-08-24T10:01:00Z","event":"Undocked","StationName":"Jameson Memorial"}
+{"timestamp":"2026-08-24T10:01:05Z","event":"StartJump","JumpType":"Hyperspace","StarSystem":"Sol"}
+{"timestamp":"2026-08-24T10:01:35Z","event":"FSDJump","StarSystem":"Sol","SystemAllegiance":"Federation","SystemGovernment_Localised":"Democracy","SystemEconomy_Localised":"Refinery","SystemSecurity_Localised":"High","Population":22780871129,"JumpDist":8.59,"FuelUsed":2.13,"FuelLevel":29.87}
+{"timestamp":"2026-08-24T10:02:00Z","event":"FSSDiscoveryScan","Progress":1,"BodyCount":12,"NonBodyCount":4}
+{"timestamp":"2026-08-24T10:02:10Z","event":"Scan","ScanType":"AutoScan","BodyName":"Sol 4","StarSystem":"Sol","PlanetClass":"High metal content body"}
+{"timestamp":"2026-08-24T10:02:20Z","event":"FSSAllBodiesFound","SystemName":"Sol","Count":12}
+{"timestamp":"2026-08-24T10:03:00Z","event":"Interdicted","Submitted":false,"Interdictor_Localised":"CMDR Villano","IsPlayer":true}
+{"timestamp":"2026-08-24T10:03:05Z","event":"UnderAttack","Target":"You"}
+{"timestamp":"2026-08-24T10:03:20Z","event":"Bounty","Rewards":[{"Faction":"Sol Federal Navy","Reward":15000}],"TotalReward":15000,"VictimFaction":"Pirates Guild"}
+{"timestamp":"2026-08-24T10:04:00Z","event":"MarketBuy","Type":"gold","Type_Localised":"Gold","Count":10,"BuyPrice":9500,"TotalCost":95000}
+{"timestamp":"2026-08-24T10:05:00Z","event":"MarketSell","Type":"gold","Type_Localised":"Gold","Count":10,"SellPrice":9800,"TotalSale":98000,"AvgPricePaid":9500}
+{"timestamp":"2026-08-24T10:06:00Z","event":"MissionAccepted","Name":"Mission_Courier","Name_Localised":"Courier mission","MissionID":900001,"Expiry":"2026-08-25T10:06:00Z"}
+{"timestamp":"2026-08-24T10:07:00Z","event":"MissionCompleted","Name":"Mission_Courier","Name_Localised":"Courier mission","MissionID":900001,"Reward":50000}
+{"timestamp":"2026-08-24T10:08:00Z","event":"PowerplayMerits","Power":"Yuri Grom","MeritsGained":120,"TotalMerits":15420}
+{"timestamp":"2026-08-24T10:08:05Z","event":"PowerplayRank","Power":"Yuri Grom","Rank":4}
+{"timestamp":"2026-08-24T10:09:00Z","event":"Docked","StationName":"Abraham Lincoln","StarSystem":"Sol","StationType":"Coriolis"}
+{"timestamp":"2026-08-24T10:10:00Z","event":"Died","KillerName":"Villano","KillerName_Localised":"CMDR Villano","KillerShip":"anaconda"}

@@ -1,0 +1,5 @@
+dist/
+plugin/logs/
+plugin/tools/
+*.backup-*
+*.log

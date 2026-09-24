@@ -1,0 +1,16 @@
+{
+  "name": "ed-touchportal-plugin",
+  "version": "0.1.0-beta",
+  "description": "Touch Portal plugin for Elite Dangerous - reads the game Journal and Status.json and exposes live states, events and utility actions to Touch Portal.",
+  "main": "plugin.js",
+  "scripts": {
+    "start": "node plugin.js start",
+    "build-entry": "node scripts/build-entry.js",
+    "test": "node test/run-tests.js"
+  },
+  "dependencies": {
+    "touchportal-api": "^4.0.0"
+  },
+  "author": "Adder",
+  "license": "MIT"
+}

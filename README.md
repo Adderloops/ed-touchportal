@@ -1,0 +1,151 @@
+# ED Touch Portal
+
+**v0.1.0-beta** · A Touch Portal plugin and page set for **Elite Dangerous**.
+
+It turns a tablet into a live cockpit panel that works alongside your HOTAS, gamepad and keyboard. The plugin reads the game's Journal and `Status.json` in real time, so the pages show your ship's state, location, cargo, ranks, loadout and more, and light up as things change in game.
+
+> **Beta:** this is the first public release. Expect rough edges and please report anything odd in [Issues](../../issues).
+
+---
+
+## What's included
+
+| Download | What it is |
+|---|---|
+| `ED-TouchPortal-Plugin-v0.1.0-beta.tpp` | The Touch Portal plugin (Node.js). Reads the game and exposes **261 states, 125 events and 8 actions** in 13 categories. |
+| `ED-TouchPortal-Pages-v0.1.0-beta.zip` | 14 ready-made pages with HUD-style backgrounds, plus an install script. |
+
+### The pages
+
+A 12 × 9 grid with 2560 × 1600 artwork, designed for a 16:10 tablet in landscape. Every page shares a 12-tab navigation bar.
+
+| Tab | Page | What it shows / does |
+|---|---|---|
+| FLIGHT | ED - Vuelo | 17 live status flags, 6 system toggles (landing gear, lights, night vision…), flight actions, and the **LOADOUT ›** subpage |
+| NAV | ED - Navegación | Current system, body, security, allegiance, economy, route and jumps; Inara / EDSM / copy-system buttons, and the **STATION ›** subpage |
+| COMBAT | ED - Combate | Under attack, interdictions, target, bounties, deaths, fighter status |
+| EXPLORE | ED - Exploración | FSS body count, scans, codex, mapping, data sold |
+| TRADE | ED - Comercio | Last trades, session profit, mining, live cargo hold, and a Community Goal trade calculator link |
+| POWER | ED - Powerplay | Power, rank, merits and merits to the next rank |
+| CMDR | ED - CMDR | Commander, ranks, reputation, ship and fuel capacity |
+| CAMERA | ED - Cámara | Free camera and photo mode controls |
+| ON FOOT | ED - A Pie | Odyssey on-foot flags, suit, environment, organic scans |
+| CARRIER | ED - Carrier y Squadron | Fleet Carrier and Squadron info |
+| UTILS | ED - Utilidades | Plugin status, session tools (reset, reload Journal, export stats), and launchers for companion apps |
+| SRV | ED - SRV | SRV status, cargo, and recall/dismiss ship |
+| *(subpage)* | ED - Loadout | Full ship loadout in 4 columns (core, optional, hardpoints, utility), with engineering grades |
+| *(subpage)* | ED - Estación | Last engineer, engineer rank, last modification, and Community Goal progress |
+
+---
+
+## Requirements
+
+- **Windows 10/11** (the utility actions and the install script are Windows-only)
+- **[Touch Portal](https://www.touch-portal.com/)** (desktop app plus the tablet or phone app). The 12 × 9 grid and multi-page setup most likely need **Touch Portal Pro**.
+- **[Node.js](https://nodejs.org/) 18 or later**, installed and on your `PATH`. The plugin starts with `node ./plugin.js`.
+- **Elite Dangerous** (Horizons or Odyssey), launched at least once so the Journal folder exists.
+
+---
+
+## Installation
+
+### 1. Install the plugin
+
+1. Download `ED-TouchPortal-Plugin-v0.1.0-beta.tpp`.
+2. In Touch Portal, open **Settings (⚙) → Plug-ins → Import plug-in** and pick the `.tpp`.
+3. Allow the plugin to start when Touch Portal asks.
+4. Close Touch Portal **completely** (including the tray icon) and open it again.
+
+### 2. Install the pages
+
+1. Close Touch Portal completely.
+2. Unzip `ED-TouchPortal-Pages-v0.1.0-beta.zip`.
+3. Right-click `install.ps1` and choose **Run with PowerShell**. If Windows blocks it, open PowerShell in that folder and run:
+   ```powershell
+   powershell -ExecutionPolicy Bypass -File .\install.ps1
+   ```
+   The script:
+   - copies the pages to `%APPDATA%\TouchPortal\pages\New Plug In\`
+   - copies the backgrounds and icons to `%APPDATA%\TouchPortal\icons\`
+   - backs up any existing pages with the same names first
+   - fills in your own user paths for the app launchers
+4. Open Touch Portal and go to **ED - Vuelo** (FLIGHT).
+5. On the tablet, disconnect and reconnect fully so it reloads the pages.
+
+> **Manual install:** copy `pages\*.tml` to `%APPDATA%\TouchPortal\pages\New Plug In\` and `icons\*` to `%APPDATA%\TouchPortal\icons\`. The folder must be called `New Plug In`, because the navigation buttons link to pages by that path.
+
+### 3. Play
+
+Start Elite Dangerous. On **UTILS**, the *PLUGIN STATUS* tile shows `CONNECTED` when the plugin is running, or `NO_JOURNAL` if it can't find the game's Journal folder.
+
+If your Journal isn't in `%USERPROFILE%\Saved Games\Frontier Developments\Elite Dangerous` (for example, because OneDrive redirects Saved Games), set an environment variable `ED_JOURNAL_FOLDER` to the correct folder and restart Touch Portal.
+
+---
+
+## Key bindings
+
+Buttons that act in the game, such as the flight toggles, camera and SRV actions, send **keyboard shortcuts**. Elite Dangerous has no input API, so this is the only way. They assume specific keys are bound in your game controls. If a button does nothing:
+
+1. Open the button in the Touch Portal editor and check which key it sends.
+2. Either bind that key in Elite Dangerous, or change the button to the key you already use.
+
+---
+
+## App launchers (UTILS page)
+
+The launcher row assumes each app's default install location: EDMC, EDDiscovery, VoiceAttack (Steam), ED Odyssey Materials Helper, EDHM-UI, ED CoPilot, ICARUS Terminal and Discord. Web links open Inara, Spansh, Merit Miner and the EDTools hotspot finder. If an app is installed somewhere else, edit that button's *Run application* path in Touch Portal.
+
+---
+
+## Known issues and limitations
+
+- **Credits are approximate.** The Journal doesn't report your balance after every transaction. It syncs on game load and adjusts for the most common transactions.
+- **Powerplay merits to the next rank** use an approximate formula, because Frontier publishes no official table.
+- **Touch Portal caching:** after changing pages or updating the plugin, restart Touch Portal fully and reconnect the tablet. A simple page refresh often keeps old images.
+- **Page file names are still in Spanish** (for example, `ED - Vuelo`). Everything shown on the tablet and in the Touch Portal editor is in English. The file names will be renamed in a later version.
+- Six toggle buttons on FLIGHT ask for the `Starduster` font. If it isn't available, Touch Portal falls back to its default font.
+- The Community Goal fields on the Station page may show `☐` when no Community Goal is active.
+
+---
+
+## Not in this beta
+
+- **Audio mixer** (per-app volume sliders and mute). It works, but it's experimental and needs NirSoft's SoundVolumeCommandLine, which isn't bundled. It's planned for a later release.
+- **Missions page**. It was removed from the navigation during development.
+- **Spanish version** of the pages. It's planned.
+
+---
+
+## Building from source
+
+```bash
+cd plugin
+# dependencies are vendored in plugin/node_modules (touchportal-api 4.0.0 from npm
+# doesn't build with current TypeScript), so there's no need to run npm install
+npm test                                 # 13 tests, no game or Touch Portal needed
+ED_TP_AUDIO=0 node scripts/build-entry.js   # regenerate entry.tp without the audio category
+cd ..
+python tools/package_release.py 0.1.0-beta  # builds dist/*.tpp and dist/*.zip
+```
+
+See [`plugin/README.md`](plugin/README.md) for the architecture and how to add new states and events.
+
+---
+
+## Credits
+
+- Built by **CMDR Adder** ([Adderloops](https://github.com/Adderloops)).
+- Plugin architecture inspired by [ChristopheCVB's Touch Portal Elite Dangerous Plugin](https://github.com/ChristopheCVB/TouchPortalEliteDangerousPlugin).
+- Journal documentation: [elite-journal.readthedocs.io](https://elite-journal.readthedocs.io/).
+
+Elite Dangerous is © Frontier Developments plc. This is an unofficial fan project. It isn't affiliated with or endorsed by Frontier Developments or Touch Portal. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+## License
+
+The code, page layouts and original artwork are released under the [MIT License](LICENSE). Third-party logos and trademarks are excluded; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+---
+
+### Español (resumen)
+
+Plugin y páginas de Touch Portal para Elite Dangerous. Instala el `.tpp` desde *Settings → Plug-ins → Import plug-in*, descomprime el `.zip` de páginas y ejecuta `install.ps1` con Touch Portal cerrado. Necesitas Node.js 18 o posterior. La interfaz está en inglés; hay una versión en español prevista.
