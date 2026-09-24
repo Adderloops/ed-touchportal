@@ -49,45 +49,25 @@ A 12 × 9 grid with 2560 × 1600 artwork, designed for a 16:10 tablet in landsca
 
 ## Installation
 
-### 1. Install the plugin
+> 📖 **Full step-by-step guide: [docs/INSTALL.md](docs/INSTALL.md)**
+> 🎮 **Key bindings, needed for the buttons to work in game: [docs/KEYBINDS.md](docs/KEYBINDS.md)**
 
-1. Download `ED-TouchPortal-Plugin-v0.1.0-beta.tpp`.
-2. In Touch Portal, open **Settings (⚙) → Plug-ins → Import plug-in** and pick the `.tpp`.
-3. Allow the plugin to start when Touch Portal asks.
-4. Close Touch Portal **completely** (including the tray icon) and open it again.
+Short version:
 
-### 2. Install the pages
-
-1. Close Touch Portal completely.
-2. Unzip `ED-TouchPortal-Pages-v0.1.0-beta.zip`.
-3. Right-click `install.ps1` and choose **Run with PowerShell**. If Windows blocks it, open PowerShell in that folder and run:
-   ```powershell
-   powershell -ExecutionPolicy Bypass -File .\install.ps1
-   ```
-   The script:
-   - copies the pages to `%APPDATA%\TouchPortal\pages\New Plug In\`
-   - copies the backgrounds and icons to `%APPDATA%\TouchPortal\icons\`
-   - backs up any existing pages with the same names first
-   - fills in your own user paths for the app launchers
-4. Open Touch Portal and go to **ED - Vuelo** (FLIGHT).
-5. On the tablet, disconnect and reconnect fully so it reloads the pages.
-
-> **Manual install:** copy `pages\*.tml` to `%APPDATA%\TouchPortal\pages\New Plug In\` and `icons\*` to `%APPDATA%\TouchPortal\icons\`. The folder must be called `New Plug In`, because the navigation buttons link to pages by that path.
-
-### 3. Play
-
-Start Elite Dangerous. On **UTILS**, the *PLUGIN STATUS* tile shows `CONNECTED` when the plugin is running, or `NO_JOURNAL` if it can't find the game's Journal folder.
-
-If your Journal isn't in `%USERPROFILE%\Saved Games\Frontier Developments\Elite Dangerous` (for example, because OneDrive redirects Saved Games), set an environment variable `ED_JOURNAL_FOLDER` to the correct folder and restart Touch Portal.
+1. Install **Node.js 18+** and restart the PC.
+2. Touch Portal → ⚙ → **Import plug-in…** → pick the `.tpp` → *Trust*. Exit Touch Portal completely (tray icon → Exit).
+3. Unzip the pages zip and run **`install.ps1`** (right-click → *Run with PowerShell*) with Touch Portal closed.
+4. Open Touch Portal, go to **ED - Vuelo** (FLIGHT) and reconnect the tablet.
+5. In game, **UTILS → PLUGIN STATUS** should show `CONNECTED`.
+6. **Set up your key bindings** with the [Key bindings guide](docs/KEYBINDS.md). The status tiles work on their own, but every button that *does* something in game presses a key, and it has to match your controls.
 
 ---
 
-## Key bindings
+## Key bindings: please read
 
-Buttons that act in the game, such as the flight toggles, camera and SRV actions, send **keyboard shortcuts**. Elite Dangerous has no input API, so this is the only way. They assume specific keys are bound in your game controls. If a button does nothing:
+Elite Dangerous has no way for other programs to control the ship, so the buttons **press keys on your keyboard**. They were set up with the author's bindings, and yours will be different. Until you match them, buttons such as LANDING GEAR, the fighter orders, the camera and the SRV controls will do nothing, or the wrong thing.
 
-1. Open the button in the Touch Portal editor and check which key it sends.
-2. Either bind that key in Elite Dangerous, or change the button to the key you already use.
+[docs/KEYBINDS.md](docs/KEYBINDS.md) explains the two ways to fix this: add the keys in the game, or change the key each button sends in Touch Portal. It includes a tick-box checklist and a full table of all 50 buttons, also available as a spreadsheet: [docs/keybinds.csv](docs/keybinds.csv).
 
 ---
 
@@ -148,4 +128,4 @@ The code, page layouts and original artwork are released under the [MIT License]
 
 ### Español (resumen)
 
-Plugin y páginas de Touch Portal para Elite Dangerous. Instala el `.tpp` desde *Settings → Plug-ins → Import plug-in*, descomprime el `.zip` de páginas y ejecuta `install.ps1` con Touch Portal cerrado. Necesitas Node.js 18 o posterior. La interfaz está en inglés; hay una versión en español prevista.
+Plugin y páginas de Touch Portal para Elite Dangerous. Instala el `.tpp` desde *Settings → Plug-ins → Import plug-in*, descomprime el `.zip` de páginas y ejecuta `install.ps1` con Touch Portal cerrado. Necesitas Node.js 18 o posterior. **Importante:** los botones envían teclas, así que tienes que ajustar tus controles siguiendo [docs/KEYBINDS.md](docs/KEYBINDS.md). La guía completa de instalación está en [docs/INSTALL.md](docs/INSTALL.md). La interfaz y las guías están en inglés; hay una versión en español prevista.

@@ -57,6 +57,8 @@ def zip_pages(path):
             for f in sorted(os.listdir(os.path.join(PAGES, sub))):
                 z.write(os.path.join(PAGES, sub, f), f'{sub}/{f}')
         z.write(os.path.join(ROOT, 'install', 'install.ps1'), 'install.ps1')
+        for f in ('INSTALL.md', 'KEYBINDS.md', 'keybinds.csv'):
+            z.write(os.path.join(ROOT, 'docs', f), f'docs/{f}')
         z.write(os.path.join(ROOT, 'README.md'), 'README.md')
         z.write(os.path.join(ROOT, 'THIRD_PARTY_NOTICES.md'), 'THIRD_PARTY_NOTICES.md')
         z.write(os.path.join(ROOT, 'LICENSE'), 'LICENSE')
@@ -65,6 +67,7 @@ def zip_pages(path):
 def main():
     ver = sys.argv[1] if len(sys.argv) > 1 else '0.1.0-beta'
     os.makedirs(DIST, exist_ok=True)
+    subprocess.run([sys.executable, os.path.join(ROOT, 'tools', 'extract_keybinds.py')], check=True)
     entry = build_entry()
     tpp = os.path.join(DIST, f'ED-TouchPortal-Plugin-v{ver}.tpp')
     pz = os.path.join(DIST, f'ED-TouchPortal-Pages-v{ver}.zip')

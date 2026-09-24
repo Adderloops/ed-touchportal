@@ -1,0 +1,59 @@
+Tab,Button,Step,Keys sent by Touch Portal,Elite Dangerous action (internal name),Controls menu section,Controls menu option
+FLIGHT,LANDING GEAR,,Left Ctrl + G,LandingGearToggle,Ship Controls › Miscellaneous,Landing Gear
+FLIGHT,FA OFF,,Left Ctrl + Z,ToggleFlightAssist,Ship Controls › Flight Miscellaneous,Toggle Flight Assist
+FLIGHT,HARDPOINTS,,Left Ctrl + U,DeployHardpointToggle,Ship Controls › Weapons,Deploy Hardpoints
+FLIGHT,LIGHTS,,Left Ctrl + L,ShipSpotLightToggle,Ship Controls › Miscellaneous,Ship Lights
+FLIGHT,CARGO SCOOP,,Left Ctrl + C,ToggleCargoScoop,Ship Controls › Miscellaneous,Cargo Scoop
+FLIGHT,NIGHT VISION,,Left Ctrl + N,NightVisionToggle,Ship Controls › Miscellaneous,Night Vision
+FLIGHT,HEAT SINK,,Left Ctrl + H,DeployHeatSink,Ship Controls › Cooling,Deploy Heat Sink
+FLIGHT,SILENT RUNNING,,Left Ctrl + S,ToggleButtonUpInput,Ship Controls › Cooling,Silent Running
+FLIGHT,JETTISON ALL CARGO,,Left Ctrl + J,EjectAllCargo,Ship Controls › Miscellaneous,Jettison All Cargo
+FLIGHT,TARGET NEXT SYSTEM,,Right Ctrl + N,TargetNextRouteSystem,Ship Controls › Targeting,Target Next System in Route
+FLIGHT,REQUEST DOCKING,1,Left Ctrl + E,FocusLeftPanel,Ship Controls › Mode Switches,External Panel (left panel)
+FLIGHT,REQUEST DOCKING,2,Page Up,CyclePreviousPanel,General Controls › Interface Mode,Previous Panel Tab
+FLIGHT,REQUEST DOCKING,3,Page Up,CyclePreviousPanel,General Controls › Interface Mode,Previous Panel Tab
+FLIGHT,REQUEST DOCKING,4,D,UI_Right,General Controls › Interface Mode,UI Panel Right
+FLIGHT,REQUEST DOCKING,5,Space,UI_Select,General Controls › Interface Mode,UI Panel Select
+COMBAT,TARGET POWER PLANT,,"key right of L (Ñ on Spanish, ; on US keyboards)",CyclePreviousSubsystem,Ship Controls › Targeting,Cycle Previous Subsystem
+COMBAT,TEAM MATE NAV LOCK,,/,WingNavLock,Ship Controls › Targeting,Wingman Nav-Lock
+COMBAT,REQUEST DOCKING,1,Left Ctrl + E,FocusLeftPanel,Ship Controls › Mode Switches,External Panel (left panel)
+COMBAT,REQUEST DOCKING,2,Page Up,CyclePreviousPanel,General Controls › Interface Mode,Previous Panel Tab
+COMBAT,REQUEST DOCKING,3,Page Up,CyclePreviousPanel,General Controls › Interface Mode,Previous Panel Tab
+COMBAT,REQUEST DOCKING,4,D,UI_Right,General Controls › Interface Mode,UI Panel Right
+COMBAT,REQUEST DOCKING,5,Space,UI_Select,General Controls › Interface Mode,UI Panel Select
+COMBAT,RECALL FIGHTER,,Numpad 0,OrderRequestDock,Ship Controls › Fighter Orders,Recall Fighter
+COMBAT,DEFEND,,Numpad 1,OrderDefensiveBehaviour,Ship Controls › Fighter Orders,Defend
+COMBAT,ENGAGE AT WILL,,Numpad 2,OrderAggressiveBehaviour,Ship Controls › Fighter Orders,Engage At Will
+COMBAT,ATTACK TARGET,,Numpad 3,OrderFocusTarget,Ship Controls › Fighter Orders,Attack Target
+COMBAT,MAINTAIN FORMATION,,Numpad 4,OrderHoldFire,Ship Controls › Fighter Orders,Maintain Formation
+COMBAT,HOLD POSITION,,Numpad 5,OrderHoldPosition,Ship Controls › Fighter Orders,Hold Position
+COMBAT,FOLLOW ME,,Numpad 6,OrderFollow,Ship Controls › Fighter Orders,Follow Me
+CAMERA,FREE CAMERA ON / OFF,,Right Ctrl + K,ToggleFreeCam,General Controls › Free Camera,Toggle Free Camera
+CAMERA,ZOOM +,,Right Ctrl + O,FreeCamZoomIn,General Controls › Free Camera,Zoom In
+CAMERA,ZOOM -,,Right Ctrl + V,FreeCamZoomOut,General Controls › Free Camera,Zoom Out
+CAMERA,LOCK,,Right Ctrl + Y,FixCameraWorldToggle,General Controls › Free Camera,Lock to World
+CAMERA,ROLL LEFT,,Right Ctrl + Q,RollCameraLeft,General Controls › Free Camera,Roll Left
+CAMERA,ROLL RIGHT,,Right Ctrl + E,RollCameraRight,General Controls › Free Camera,Roll Right
+CAMERA,MOVE FORWARD,,Right Ctrl + W,MoveFreeCamForward,General Controls › Free Camera,Move Forward
+CAMERA,MOVE BACK,,Right Ctrl + X,MoveFreeCamBackwards,General Controls › Free Camera,Move Backwards
+CAMERA,ZOOM / BLUR TOGGLE,,Right Ctrl + A,ToggleAdvanceMode,General Controls › Free Camera,Toggle Zoom/Blur (Advanced Mode)
+CAMERA,STABILISER OFF,,Right Ctrl + S,ToggleRotationLock,General Controls › Free Camera,Toggle Rotation Lock (Stabiliser)
+CAMERA,SHIP CONTROLS,,Right Ctrl + I,FixCameraRelativeToggle,General Controls › Free Camera,Lock to Ship
+CAMERA,PHOTO MODE,,Right Ctrl + P,PhotoCameraToggle,General Controls › Camera Suite,Toggle Camera Suite
+SRV,HANDBRAKE,,Right Ctrl + F,AutoBreakBuggyButton,SRV Controls › Driving,Handbrake
+SRV,TURRET VIEW,,Right Ctrl + T,ToggleBuggyTurretButton,SRV Controls › Mode Switches,Toggle Turret Mode
+SRV,DRIVE ASSIST,,Right Ctrl + D,ToggleDriveAssist,SRV Controls › Driving,Drive Assist
+SRV,HIGH BEAMS,,Right Ctrl + L,HeadlightsBuggyButton,SRV Controls › Miscellaneous,Headlights
+SRV,NEXT GROUP,,N,BuggyCycleFireGroupNext,SRV Controls › Weapons,Next Fire Group
+SRV,EXTERNAL PANEL,,1,FocusLeftPanel_Buggy,SRV Controls › Mode Switches,External Panel
+SRV,COMMS PANEL,,2,FocusCommsPanel_Buggy,SRV Controls › Mode Switches,Comms Panel
+SRV,ROLE PANEL,,3,FocusRadarPanel_Buggy,SRV Controls › Mode Switches,Role Panel
+SRV,INTERNAL PANEL,,4,FocusRightPanel_Buggy,SRV Controls › Mode Switches,Internal Panel
+SRV,QUICK COMMS,,Enter,QuickCommsPanel_Buggy,SRV Controls › Mode Switches,Quick Comms
+SRV,PREVIOUS PAGE,,Page Up,CyclePreviousPanel,General Controls › Interface Mode,Previous Panel Tab
+SRV,UP,,W,UI_Up,General Controls › Interface Mode,UI Panel Up
+SRV,NEXT PAGE,,Page Down,CycleNextPanel,General Controls › Interface Mode,Next Panel Tab
+SRV,RECALL SHIP,,Right Ctrl + R,RecallDismissShip,SRV Controls › Miscellaneous,Recall / Dismiss Ship
+SRV,LEFT,,A,UI_Left,General Controls › Interface Mode,UI Panel Left
+SRV,DOWN,,S,UI_Down,General Controls › Interface Mode,UI Panel Down
+SRV,RIGHT,,D,UI_Right,General Controls › Interface Mode,UI Panel Right

@@ -19,3 +19,8 @@ First public beta.
 - Loadout page background translated: `‹ BACK` navigation bar, CORE INTERNAL / OPTIONAL INTERNAL / HARDPOINTS / UTILITY MOUNTS headers, and SHIP / NAME / SHIP ID labels.
 - App launcher paths use `%LOCALAPPDATA%` / `%APPDATA%`, which the installer fills in for your user.
 - `install.ps1` installer with automatic backup.
+
+### Documentation
+- `docs/INSTALL.md`: step-by-step installation guide with troubleshooting.
+- `docs/KEYBINDS.md`: key bindings guide covering both ways to match the buttons to your controls (change the game or change Touch Portal), a checklist by game menu section, and a full reference of all 50 key-sending buttons.
+- `docs/keybinds.csv`: the same reference as a spreadsheet, generated from the pages by `tools/extract_keybinds.py`.
